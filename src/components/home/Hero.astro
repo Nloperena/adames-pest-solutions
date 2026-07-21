@@ -1,0 +1,61 @@
+---
+import CTAButton from '../CTAButton.astro';
+import { homePage } from '../../data/pages';
+import { legacyImages } from '../../data/legacyImages';
+import { primaryPhoneHref, site } from '../../data/site';
+
+const heroImage = legacyImages.bannerTechnician;
+---
+
+<section class="home-hero" aria-labelledby="hero-heading">
+  <div class="home-hero__copy">
+    <div class="home-hero__copy-inner">
+      <p class="home-hero__brand">{site.name}</p>
+      <h1 id="hero-heading">{homePage.hero.h1}</h1>
+      <p class="home-hero__lead">{homePage.hero.lead}</p>
+      <div class="home-hero__cta">
+        <CTAButton href={primaryPhoneHref()} variant="yellow">{site.cta.callLabel}</CTAButton>
+        <CTAButton action="estimate" variant="ghost">{site.cta.estimateLabel} →</CTAButton>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-hero__media">
+    <img
+      class="home-hero__image"
+      src={heroImage.src}
+      alt={heroImage.alt}
+      width={heroImage.width}
+      height={heroImage.height}
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <!-- Hard wave seam — path spans full viewBox height -->
+    <svg
+      class="home-hero__wave home-hero__wave--side"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        fill="currentColor"
+        d="M0 0H48C62 12 70 25 58 37 46 49 34 62 48 75 62 88 70 94 52 100H0V0Z"
+      ></path>
+    </svg>
+    <svg
+      class="home-hero__wave home-hero__wave--bottom"
+      viewBox="0 0 1000 64"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        fill="currentColor"
+        d="M0 64V28c100-16 200-28 300-14s200 30 300 12 200-28 300-16V64H0Z"
+      ></path>
+    </svg>
+  </div>
+</section>

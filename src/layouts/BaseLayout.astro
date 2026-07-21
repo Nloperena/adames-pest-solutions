@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import '../styles/site-chat.css';
+import '../components/react/header.css';
+import '../components/react/lead-form.css';
+import '../components/react/contact-modal.css';
+import SEOHead from '../components/SEOHead.astro';
+import SiteHeader from '../components/react/SiteHeader';
+import SiteFooter from '../components/SiteFooter.astro';
+import ContactModal from '../components/react/ContactModal';
+import { SiteChatWidget } from '../components/chat/SiteChatWidget';
+import { ADAMES_SITE_KEY } from '../lib/nexrena-api';
+import { businessName, site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  lang?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, ogImage, lang = 'en', noindex = false, schema } = Astro.props;
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${site.url}/#business`,
+  name: businessName(true),
+  image: new URL(site.logo.src, site.url).toString(),
+  url: site.url,
+  telephone: site.phone.primary,
+  email: site.email.primary,
+  description,
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: site.region,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '17:00',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: site.address.addressLocality || site.region,
+    addressRegion: site.address.addressRegion,
+    addressCountry: site.address.addressCountry,
+  },
+};
+
+const schemaPayload = schema ?? localBusinessSchema;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <SEOHead title={title} description={description} ogImage={ogImage} noindex={noindex} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaPayload)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader client:load />
+    <slot />
+    <SiteFooter />
+    <ContactModal client:load />
+    <SiteChatWidget client:only="react" siteKey={ADAMES_SITE_KEY} />
+  </body>
+</html>

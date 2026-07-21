@@ -1,0 +1,162 @@
+---
+import { pests } from '../../data/pests';
+import PestIcon from '../icons/PestIcon';
+---
+
+<section class="section pests" id="pest-library" aria-labelledby="pests-heading">
+  <div class="container">
+    <p class="section-label">Pest Library</p>
+    <h2 class="section-title" id="pests-heading">What’s bugging you?</h2>
+    <p class="section-lead">
+      Pick a pest to jump into the matching service page and see how we can help.
+    </p>
+
+    <ul class="pests__grid">
+      {
+        pests.map((pest) => (
+          <li>
+            <a class="pest-card" href={pest.href}>
+              <div class="pest-card__bg">
+                <PestIcon 
+                  name={pest.id} 
+                  className="pest-card__img" 
+                  style={{ objectFit: 'cover', mixBlendMode: 'multiply', width: '100%', height: '100%' }}
+                  client:visible 
+                />
+              </div>
+              <div class="pest-card__content">
+                <div class="pest-card__label">
+                  <span class="pest-card__name">{pest.name}</span>
+                  <span class="pest-card__more">Learn more →</span>
+                </div>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .pests__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pest-card {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 1 / 1;
+    min-height: 240px;
+    border: 3px solid var(--ink);
+    border-radius: var(--radius);
+    background: var(--cream);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    transition:
+      transform 120ms ease,
+      box-shadow 120ms ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pest-card:hover,
+  .pest-card:focus-visible {
+    transform: translate(-4px, -4px);
+    box-shadow: var(--shadow);
+    background: var(--yellow);
+  }
+
+  .pest-card__bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .pest-card__bg :global(img),
+  .pest-card__bg :global(svg) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+  }
+
+  .pest-card:hover .pest-card__bg :global(img),
+  .pest-card:hover .pest-card__bg :global(svg) {
+    transform: scale(1.08);
+  }
+
+  .pest-card__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    padding: 1.25rem;
+  }
+
+  .pest-card__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    background: var(--white);
+    border: 3px solid var(--ink);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    box-shadow: 4px 4px 0px var(--ink);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+    text-align: center;
+  }
+
+  .pest-card:hover .pest-card__label {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--ink);
+  }
+
+  .pest-card__name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .pest-card__more {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .pest-card:hover .pest-card__more {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 900px) {
+    .pests__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pests__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

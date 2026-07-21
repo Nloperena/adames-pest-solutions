@@ -1,0 +1,28 @@
+---
+interface Props {
+  href?: string;
+  action?: 'contact' | 'estimate';
+  variant?: 'yellow' | 'blue' | 'ghost';
+  block?: boolean;
+}
+
+const { href, action, variant = 'yellow', block = false } = Astro.props;
+const classes = [
+  'btn',
+  variant === 'blue' && 'btn--blue',
+  variant === 'ghost' && 'btn--ghost',
+  block && 'btn--block',
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+{
+  action ? (
+    <button type="button" class={classes} data-open-contact={action}>
+      <slot />
+    </button>
+  ) : (
+    <a class={classes} href={href}><slot /></a>
+  )
+}

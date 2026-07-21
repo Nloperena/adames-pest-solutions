@@ -1,0 +1,32 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+import { estimatePage } from '../data/pages';
+import { primaryEmailHref, primaryPhone, primaryPhoneHref, site } from '../data/site';
+---
+
+<ContentPage
+  title={estimatePage.seo.title}
+  description={estimatePage.seo.description}
+  h1={estimatePage.h1}
+  lead={estimatePage.intro[0]}
+  crumbs={[{ label: 'Home', href: '/' }, { label: 'Request an Estimate' }]}
+  mediaSrc="/images/generated/estimate/clipboard.webp"
+  mediaAlt="Clipboard graphic for scheduling a pest estimate"
+  mediaWidth={900}
+  mediaHeight={1350}
+  formAction="estimate"
+  hideCta={true}
+>
+  <p>
+    The fastest path is a phone call. You can also open the estimate form and tell us what you are
+    seeing at the property.
+  </p>
+  <p>
+    <button type="button" class="btn" data-open-contact="estimate">{site.cta.estimateLabel} →</button>
+  </p>
+  <p>
+    Call <a href={primaryPhoneHref()}>{primaryPhone()}</a>
+    ·
+    <a href={primaryEmailHref()}>email the office</a>
+  </p>
+</ContentPage>

@@ -1,0 +1,101 @@
+---
+import CTAButton from '../CTAButton.astro';
+import { serviceAreas } from '../../data/serviceAreas';
+---
+
+<section class="section areas" id="service-areas" aria-labelledby="areas-heading">
+  <div class="container areas__grid">
+    <div>
+      <p class="section-label">Coverage</p>
+      <h2 class="section-title" id="areas-heading">Protecting homes across Central Florida.</h2>
+      <p class="section-lead">
+        Local pest control for homes and businesses throughout Central Florida. Not sure if we cover your street? Ask — we will confirm before scheduling.
+      </p>
+      <CTAButton action="contact">Check your service area →</CTAButton>
+    </div>
+
+    <div class="areas__map panel">
+      <img
+        src="/images/generated/home/central-florida-map.webp"
+        alt="Stylized map graphic of Central Florida service coverage"
+        class="service-area__image"
+        width="1200"
+        height="800"
+        loading="lazy"
+        decoding="async"
+      />
+      <p class="areas__map-label">Service areas</p>
+      <ul>
+        {
+          serviceAreas.map((area) => (
+            <li>
+              <strong>{area.name}</strong>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .areas__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .areas :global(.btn) {
+    margin-top: 1.5rem;
+  }
+
+  .areas__map {
+    padding: 1rem;
+  }
+
+  .service-area__image {
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--ink);
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+
+  .areas__map-label {
+    margin: 1rem 0 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .areas__map ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .areas__map li {
+    padding: 0.75rem 0.85rem;
+    border: 3px solid var(--ink);
+    background: var(--white);
+    box-shadow: 3px 3px 0 var(--blue);
+  }
+
+  .areas__map strong {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 860px) {
+    .areas__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

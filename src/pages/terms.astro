@@ -1,0 +1,13 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+import { termsPage } from '../data/pages';
+---
+
+<ContentPage
+  title={termsPage.seo.title}
+  description={termsPage.seo.description}
+  h1={termsPage.h1}
+  crumbs={[{ label: 'Home', href: '/' }, { label: 'Terms of Service' }]}
+>
+  {termsPage.body.map((p) => <p>{p}</p>)}
+</ContentPage>

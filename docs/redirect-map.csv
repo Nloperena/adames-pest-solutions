@@ -1,0 +1,37 @@
+source,destination,status,notes
+/about/,/about-us/,301,Prior redesign alias → preserve live URL
+/residential/,/pest-control/,301,Prior redesign alias → residential content lives at pest-control
+/commercial/,/commercial-services/,301,Prior redesign alias → preserve live URL
+/pests/,/pest-control/,301,Do not keep thin pest library index
+/pests/ants/,/pest-control/#ants,301,Future pest expansion not shipping thin pages
+/pests/cockroaches/,/pest-control/#cockroaches,301,Anchor on residential pest list
+/pests/termites/,/termite-control/,301,
+/pests/rodents/,/rodent-control/,301,
+/pests/spiders/,/pest-control/#spiders,301,
+/pests/mosquitoes/,/pest-control/#mosquitoes,301,
+/pests/wasps/,/pest-control/#wasps,301,
+/pests/bed-bugs/,/pest-control/#bed-bugs,301,
+/services/,/pest-control/,301,Prior services index removed
+/services/mosquito-control/,/pest-control/#mosquitoes,301,No dedicated mosquito page on live site
+/services/preventative-maintenance/,/commercial-services/,301,No dedicated maintenance page on live site
+/service-areas/,/contact-us/,301,City doorway pages not created; contact for coverage
+/service-areas/orlando/,/contact-us/,301,Invented city page removed
+/service-areas/kissimmee/,/contact-us/,301,Invented city page removed
+/service-areas/st-cloud/,/contact-us/,301,St. Cloud mentioned on Spanish page; no thin city page
+/service-areas/winter-park/,/contact-us/,301,Invented city page removed
+/service-areas/sanford/,/contact-us/,301,Invented city page removed
+/service-areas/oviedo/,/contact-us/,301,Invented city page removed
+/service-areas/lake-nona/,/contact-us/,301,Invented city page removed
+/service-areas/clermont/,/contact-us/,301,Invented city page removed
+/about-us/,/about-us/,200,Preserved
+/pest-control/,/pest-control/,200,Preserved
+/rodent-control/,/rodent-control/,200,Preserved
+/termite-control/,/termite-control/,200,Preserved
+/commercial-services/,/commercial-services/,200,Preserved
+/request-an-estimate/,/request-an-estimate/,200,Preserved
+/faqs/,/faqs/,200,Preserved
+/se-habla-espanol/,/se-habla-espanol/,200,Preserved
+/contact-us/,/contact-us/,200,Preserved
+/sitemap/,/sitemap/,200,Preserved
+/privacy/,/privacy/,200,New legal stub
+/terms/,/terms/,200,New legal stub

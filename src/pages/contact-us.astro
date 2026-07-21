@@ -1,0 +1,55 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+import { contactPage } from '../data/pages';
+import {
+  businessName,
+  primaryEmail,
+  primaryEmailHref,
+  primaryPhone,
+  primaryPhoneHref,
+  site,
+} from '../data/site';
+---
+
+<ContentPage
+  title={contactPage.seo.title}
+  description={contactPage.seo.description}
+  h1={contactPage.h1}
+  lead={contactPage.intro[0]}
+  crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact Us' }]}
+  mediaSrc="/images/generated/contact/phone-panel.webp"
+  mediaAlt="Graphic contact panel with space for phone details"
+  mediaWidth={900}
+  mediaHeight={1350}
+  formAction="contact"
+  hideCta={true}
+>
+  <div class="contact-facts panel">
+    <h2>Office contact</h2>
+    <p>
+      Phone: <a href={primaryPhoneHref()}>{primaryPhone()}</a><br />
+      Email: <a href={primaryEmailHref()}>{primaryEmail()}</a><br />
+      Hours: {site.hours.weekdays}
+    </p>
+  </div>
+
+  <h2>Send a message</h2>
+  <p>
+    Prefer the form? Open it here and we will get back to you during business hours — or call{' '}
+    {businessName()} now at <a href={primaryPhoneHref()}>{primaryPhone()}</a>.
+  </p>
+  <p>
+    <button type="button" class="btn" data-open-contact="contact">Open contact form →</button>
+  </p>
+</ContentPage>
+
+<style>
+  .contact-facts {
+    padding: 1.25rem;
+    margin: 0 0 1.5rem;
+  }
+
+  .contact-facts h2 {
+    margin-top: 0.5rem;
+  }
+</style>

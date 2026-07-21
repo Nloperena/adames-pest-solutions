@@ -1,0 +1,47 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+import { faqsPage } from '../data/pages';
+---
+
+<ContentPage
+  title={faqsPage.seo.title}
+  description={faqsPage.seo.description}
+  h1={faqsPage.h1}
+  lead={faqsPage.intro[0]}
+  crumbs={[{ label: 'Home', href: '/' }, { label: 'FAQs' }]}
+  formAction="contact"
+>
+  <div class="faq-list">
+    {
+      faqsPage.items.map((item) => (
+        <details class="panel">
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</ContentPage>
+
+<style>
+  .faq-list {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+  }
+
+  .faq-list details {
+    padding: 1rem 1.1rem;
+  }
+
+  .faq-list summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+  }
+
+  .faq-list details p {
+    margin: 0.75rem 0 0;
+  }
+</style>

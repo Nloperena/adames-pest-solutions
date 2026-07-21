@@ -1,0 +1,24 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+import { aboutPage } from '../data/pages';
+---
+
+<ContentPage
+  title={aboutPage.seo.title}
+  description={aboutPage.seo.description}
+  h1={aboutPage.h1}
+  lead={aboutPage.intro[0]}
+  crumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
+  mediaSrc="/images/legacy/banner-technician.jpg"
+  mediaAlt="Pest control technician treating a property"
+>
+  {aboutPage.intro.slice(1).map((p) => <p>{p}</p>)}
+  {
+    aboutPage.sections.map((section) => (
+      <>
+        <h2>{section.heading}</h2>
+        {section.body.map((p) => <p>{p}</p>)}
+      </>
+    ))
+  }
+</ContentPage>

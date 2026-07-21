@@ -1,0 +1,13 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+import { privacyPage } from '../data/pages';
+---
+
+<ContentPage
+  title={privacyPage.seo.title}
+  description={privacyPage.seo.description}
+  h1={privacyPage.h1}
+  crumbs={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]}
+>
+  {privacyPage.body.map((p) => <p>{p}</p>)}
+</ContentPage>

@@ -1,0 +1,197 @@
+---
+import { footerLegal, footerNav, footerServices } from '../data/navigation';
+import { pests } from '../data/pests';
+import { serviceAreas } from '../data/serviceAreas';
+import {
+  businessName,
+  primaryEmail,
+  primaryEmailHref,
+  primaryPhone,
+  primaryPhoneHref,
+  site,
+} from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__logo" aria-label={`${businessName()} home`}>
+        <img src={site.logo.src} alt={site.logo.alt} width="220" height="110" loading="lazy" />
+      </a>
+      <p>
+        Local pest control for homes and businesses across {site.region}. Direct answers, clear
+        plans, and treatments that last.
+      </p>
+      <p>
+        <a href={primaryPhoneHref()}>{primaryPhone()}</a><br />
+        <a href={primaryEmailHref()}>{primaryEmail()}</a>
+      </p>
+      <p>
+        <strong>Hours</strong><br />
+        {site.hours.weekdays}<br />
+        {site.hours.weekend}
+      </p>
+      {
+        site.social.facebook.status !== 'placeholder' && (
+          <div class="site-footer__social">
+            <a href={site.social.facebook.href} rel="noopener noreferrer" target="_blank">
+              Facebook
+            </a>
+            {site.social.instagram.status !== 'placeholder' && (
+              <a href={site.social.instagram.href} rel="noopener noreferrer" target="_blank">
+                Instagram
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+
+    <div>
+      <h2>Explore</h2>
+      <ul>
+        {footerNav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2>Services</h2>
+      <ul>
+        {footerServices.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2>Common pests</h2>
+      <ul>
+        {pests.map((pest) => (
+          <li><a href={pest.href}>{pest.name}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2>Service area</h2>
+      <ul>
+        {serviceAreas.map((area) => (
+          <li>{area.name}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="container site-footer__bottom-inner">
+      <p>© {new Date().getFullYear()} {businessName(true)} All rights reserved.</p>
+      <ul>
+        {footerLegal.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: var(--cream);
+    border-top: var(--border) solid var(--ink);
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(4, 1fr);
+    gap: 2rem;
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .site-footer__logo {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.65rem;
+    background: var(--cream);
+    border: 3px solid var(--yellow);
+  }
+
+  .site-footer__logo img {
+    width: 11rem;
+  }
+
+  .site-footer h2 {
+    margin: 0 0 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+
+  .site-footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-footer li + li {
+    margin-top: 0.45rem;
+  }
+
+  .site-footer a {
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .site-footer a:hover,
+  .site-footer a:focus-visible {
+    color: var(--yellow);
+    text-decoration: underline;
+  }
+
+  .site-footer__social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .site-footer__status,
+  .site-footer__note {
+    color: rgba(247, 243, 232, 0.7);
+    font-size: 0.8rem;
+  }
+
+  .site-footer__bottom {
+    border-top: 2px solid rgba(247, 243, 232, 0.2);
+  }
+
+  .site-footer__bottom-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0 1.35rem;
+    font-size: 0.875rem;
+  }
+
+  .site-footer__bottom ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  @media (max-width: 980px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

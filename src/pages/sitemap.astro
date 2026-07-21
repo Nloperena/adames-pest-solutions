@@ -1,0 +1,25 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+import { footerNav, footerServices } from '../data/navigation';
+import { businessName } from '../data/site';
+---
+
+<ContentPage
+  title={`Sitemap | ${businessName()}`}
+  description="HTML sitemap for Adames Pest Solutions."
+  h1="Sitemap"
+  crumbs={[{ label: 'Home', href: '/' }, { label: 'Sitemap' }]}
+>
+  <h2>Main pages</h2>
+  <ul>
+    {footerNav.map((item) => (
+      <li><a href={item.href}>{item.label}</a></li>
+    ))}
+  </ul>
+  <h2>Services</h2>
+  <ul>
+    {footerServices.map((item) => (
+      <li><a href={item.href}>{item.label}</a></li>
+    ))}
+  </ul>
+</ContentPage>

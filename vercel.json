@@ -1,0 +1,20 @@
+{
+  "redirects": [
+    { "source": "/about", "destination": "/about-us/", "statusCode": 301 },
+    { "source": "/about/", "destination": "/about-us/", "statusCode": 301 },
+    { "source": "/residential", "destination": "/pest-control/", "statusCode": 301 },
+    { "source": "/residential/", "destination": "/pest-control/", "statusCode": 301 },
+    { "source": "/commercial", "destination": "/commercial-services/", "statusCode": 301 },
+    { "source": "/commercial/", "destination": "/commercial-services/", "statusCode": 301 },
+    { "source": "/pests", "destination": "/pest-control/", "statusCode": 301 },
+    { "source": "/pests/", "destination": "/pest-control/", "statusCode": 301 },
+    { "source": "/pests/:slug", "destination": "/pest-control/", "statusCode": 301 },
+    { "source": "/pests/:slug/", "destination": "/pest-control/", "statusCode": 301 },
+    { "source": "/services", "destination": "/pest-control/", "statusCode": 301 },
+    { "source": "/services/", "destination": "/pest-control/", "statusCode": 301 },
+    { "source": "/services/:path*", "destination": "/pest-control/", "statusCode": 301 },
+    { "source": "/service-areas", "destination": "/contact-us/", "statusCode": 301 },
+    { "source": "/service-areas/", "destination": "/contact-us/", "statusCode": 301 },
+    { "source": "/service-areas/:path*", "destination": "/contact-us/", "statusCode": 301 }
+  ]
+}

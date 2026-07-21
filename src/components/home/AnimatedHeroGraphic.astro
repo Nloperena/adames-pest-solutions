@@ -1,0 +1,205 @@
+---
+---
+
+<div class="hero-graphic" aria-hidden="true">
+  <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" class="hero-svg">
+    <defs>
+      <!-- Halftone pattern for the background -->
+      <pattern id="halftone" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="2" fill="var(--blue)" opacity="0.15" />
+      </pattern>
+      
+      <!-- Forcefield glow -->
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="8" result="blur" />
+        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+      </filter>
+    </defs>
+
+    <!-- Background Burst -->
+    <g class="burst-group">
+      <circle cx="400" cy="300" r="400" fill="url(#halftone)" />
+      <path d="M400,300 L800,0 L800,100 Z M400,300 L800,200 L800,300 Z M400,300 L800,400 L800,500 Z M400,300 L800,600 L700,600 Z M400,300 L500,600 L400,600 Z M400,300 L300,600 L200,600 Z M400,300 L100,600 L0,600 Z M400,300 L0,500 L0,400 Z M400,300 L0,300 L0,200 Z M400,300 L0,100 L0,0 Z M400,300 L100,0 L200,0 Z M400,300 L300,0 L400,0 Z M400,300 L500,0 L600,0 Z M400,300 L700,0 L800,0 Z" fill="var(--yellow)" opacity="0.4" class="burst-rays" />
+    </g>
+
+    <!-- Ground -->
+    <rect x="0" y="450" width="800" height="150" fill="var(--blue)" stroke="var(--ink)" stroke-width="6" />
+    <path d="M0,470 L800,470 M0,490 L800,490 M0,510 L800,510" stroke="var(--ink)" stroke-width="2" opacity="0.3" />
+
+    <!-- House -->
+    <g class="house" transform="translate(250, 200)">
+      <!-- Main body -->
+      <rect x="50" y="100" width="200" height="150" fill="var(--cream)" stroke="var(--ink)" stroke-width="8" />
+      <!-- Roof -->
+      <polygon points="20,100 150,20 280,100" fill="var(--yellow)" stroke="var(--ink)" stroke-width="8" stroke-linejoin="round" />
+      <!-- Door -->
+      <rect x="120" y="170" width="60" height="80" fill="var(--blue)" stroke="var(--ink)" stroke-width="6" />
+      <circle cx="170" cy="215" r="5" fill="var(--yellow)" stroke="var(--ink)" stroke-width="2" />
+      <!-- Window -->
+      <rect x="70" y="130" width="40" height="40" fill="var(--white)" stroke="var(--ink)" stroke-width="6" />
+      <line x1="90" y1="130" x2="90" y2="170" stroke="var(--ink)" stroke-width="4" />
+      <line x1="70" y1="150" x2="110" y2="150" stroke="var(--ink)" stroke-width="4" />
+      <!-- Chimney -->
+      <rect x="210" y="40" width="30" height="60" fill="var(--blue)" stroke="var(--ink)" stroke-width="6" />
+      <rect x="200" y="30" width="50" height="15" fill="var(--cream)" stroke="var(--ink)" stroke-width="6" />
+    </g>
+
+    <!-- Forcefield Dome -->
+    <path d="M 180 450 C 180 150, 620 150, 620 450" fill="var(--blue)" fill-opacity="0.1" stroke="var(--blue)" stroke-width="8" stroke-dasharray="20 10" class="forcefield" filter="url(#glow)" />
+    <path d="M 180 450 C 180 150, 620 150, 620 450" fill="none" stroke="var(--white)" stroke-width="4" stroke-dasharray="20 10" class="forcefield-inner" />
+
+    <!-- Bugs bouncing off -->
+    <g class="bug bug-1">
+      <circle cx="120" cy="350" r="8" fill="var(--ink)" />
+      <path d="M110,345 L100,340 M110,355 L100,360 M130,345 L140,340 M130,355 L140,360 M120,340 L120,330 M120,360 L120,370" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" />
+      <!-- Zap effect -->
+      <path d="M140,350 L160,340 L150,350 L170,360 Z" fill="var(--yellow)" class="zap zap-1" />
+    </g>
+
+    <g class="bug bug-2">
+      <circle cx="680" cy="280" r="10" fill="var(--ink)" />
+      <path d="M670,275 L660,270 M670,285 L660,290 M690,275 L700,270 M690,285 L700,290 M680,270 L680,260 M680,290 L680,300" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" />
+      <!-- Zap effect -->
+      <path d="M660,280 L640,270 L650,280 L630,290 Z" fill="var(--yellow)" class="zap zap-2" />
+    </g>
+
+    <g class="bug bug-3">
+      <circle cx="400" cy="80" r="7" fill="var(--ink)" />
+      <path d="M390,75 L380,70 M390,85 L380,90 M410,75 L420,70 M410,85 L420,90 M400,70 L400,60 M400,90 L400,100" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" />
+      <!-- Zap effect -->
+      <path d="M400,100 L390,120 L400,110 L410,130 Z" fill="var(--yellow)" class="zap zap-3" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .hero-graphic {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--white);
+    border: 4px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 12px 12px 0 var(--blue);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-svg {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    display: block;
+  }
+
+  /* Animations */
+  @keyframes rotate-burst {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .burst-rays {
+    transform-origin: 400px 300px;
+    animation: rotate-burst 60s linear infinite;
+  }
+
+  @keyframes pulse-forcefield {
+    0%, 100% { stroke-width: 8px; opacity: 0.8; }
+    50% { stroke-width: 14px; opacity: 1; }
+  }
+
+  .forcefield {
+    animation: pulse-forcefield 3s ease-in-out infinite;
+  }
+
+  @keyframes dash-flow {
+    to { stroke-dashoffset: -30; }
+  }
+
+  .forcefield-inner {
+    animation: dash-flow 1s linear infinite;
+  }
+
+  /* Bug 1 Animation */
+  @keyframes bug-attack-1 {
+    0% { transform: translate(-50px, 20px); }
+    45% { transform: translate(30px, -10px); }
+    50% { transform: translate(40px, -15px); } /* Hit */
+    55% { transform: translate(20px, 10px); } /* Bounce */
+    100% { transform: translate(-50px, 50px); }
+  }
+
+  @keyframes zap-flash-1 {
+    0%, 48% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.5); }
+    55%, 100% { opacity: 0; transform: scale(0.5); }
+  }
+
+  .bug-1 {
+    animation: bug-attack-1 4s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .zap-1 {
+    opacity: 0;
+    transform-origin: 150px 350px;
+    animation: zap-flash-1 4s infinite;
+  }
+
+  /* Bug 2 Animation */
+  @keyframes bug-attack-2 {
+    0% { transform: translate(50px, -30px); }
+    35% { transform: translate(-30px, 10px); }
+    40% { transform: translate(-40px, 15px); } /* Hit */
+    45% { transform: translate(-20px, -10px); } /* Bounce */
+    100% { transform: translate(50px, -50px); }
+  }
+
+  @keyframes zap-flash-2 {
+    0%, 38% { opacity: 0; transform: scale(0.5); }
+    40% { opacity: 1; transform: scale(1.5); }
+    45%, 100% { opacity: 0; transform: scale(0.5); }
+  }
+
+  .bug-2 {
+    animation: bug-attack-2 5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s;
+  }
+  .zap-2 {
+    opacity: 0;
+    transform-origin: 650px 280px;
+    animation: zap-flash-2 5s infinite 1s;
+  }
+
+  /* Bug 3 Animation */
+  @keyframes bug-attack-3 {
+    0% { transform: translate(0px, -60px); }
+    65% { transform: translate(0px, 20px); }
+    70% { transform: translate(0px, 30px); } /* Hit */
+    75% { transform: translate(0px, 10px); } /* Bounce */
+    100% { transform: translate(0px, -60px); }
+  }
+
+  @keyframes zap-flash-3 {
+    0%, 68% { opacity: 0; transform: scale(0.5); }
+    70% { opacity: 1; transform: scale(1.5); }
+    75%, 100% { opacity: 0; transform: scale(0.5); }
+  }
+
+  .bug-3 {
+    animation: bug-attack-3 6s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) 2s;
+  }
+  .zap-3 {
+    opacity: 0;
+    transform-origin: 400px 110px;
+    animation: zap-flash-3 6s infinite 2s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .burst-rays, .forcefield, .forcefield-inner, .bug-1, .bug-2, .bug-3, .zap-1, .zap-2, .zap-3 {
+      animation: none;
+    }
+    .zap-1, .zap-2, .zap-3 {
+      display: none;
+    }
+  }
+</style>

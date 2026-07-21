@@ -1,0 +1,86 @@
+---
+import { trustBadges, testimonials } from '../../data/testimonials';
+---
+
+<section class="section trust" aria-labelledby="trust-heading">
+  <div class="container">
+    <p class="section-label">Trust</p>
+    <h2 class="section-title" id="trust-heading">Local service. Clear results.</h2>
+    <p class="section-lead">
+      Straightforward pest control for Central Florida homes and businesses — inspection first, then a plan you can follow.
+    </p>
+
+    <div class="trust__stats">
+      {
+        trustBadges.map((badge) => (
+          <article class="trust__stat panel">
+            <h3>{badge.title}</h3>
+            <p>{badge.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    {
+      testimonials.length > 0 && (
+        <ul class="trust__quotes">
+          {testimonials.map((item) => (
+            <li class="trust__quote panel">
+              <blockquote>
+                <p>“{item.quote}”</p>
+                <footer>
+                  <cite>
+                    {item.name}
+                    <span> · {item.location}</span>
+                  </cite>
+                </footer>
+              </blockquote>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .trust__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+    margin: 2rem 0 0;
+  }
+
+  .trust__stat {
+    padding: 1.1rem;
+  }
+
+  .trust__stat h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+  }
+
+  .trust__stat p {
+    margin: 0.55rem 0 0;
+  }
+
+  .trust__quotes {
+    display: grid;
+    gap: 0.85rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .trust__quote {
+    padding: 1.1rem;
+  }
+
+  @media (max-width: 800px) {
+    .trust__stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

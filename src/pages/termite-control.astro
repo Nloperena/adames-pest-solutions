@@ -1,0 +1,45 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+import { getServiceByHref } from '../data/services';
+import { businessName, site } from '../data/site';
+
+const service = getServiceByHref('/termite-control/')!;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.navLabel,
+  provider: { '@type': 'LocalBusiness', name: businessName(true), telephone: site.phone.primary },
+  areaServed: site.region,
+  description: service.seo.description,
+  url: new URL(service.href, site.url).toString(),
+};
+---
+
+<ContentPage
+  title={service.seo.title}
+  description={service.seo.description}
+  h1={service.h1}
+  lead={service.intro[0]}
+  crumbs={[{ label: 'Home', href: '/' }, { label: 'Termite Control' }]}
+  mediaSrc="/images/legacy/cta-termite.jpg"
+  mediaAlt="Termites on wood illustrating termite control needs"
+  schema={schema}
+>
+  {service.intro.slice(1).map((p) => <p>{p}</p>)}
+  {
+    service.sections.map((section) => (
+      <>
+        <h2>{section.heading}</h2>
+        {section.body.map((p) => <p>{p}</p>)}
+        {section.list && (
+          <ul>
+            {section.list.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        )}
+      </>
+    ))
+  }
+  <p>{service.ctaNote}</p>
+</ContentPage>

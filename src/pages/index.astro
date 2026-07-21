@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FinalCta from '../components/home/FinalCta.astro';
+import Hero from '../components/home/Hero.astro';
+import MascotBand from '../components/home/MascotBand.astro';
+import PestSelector from '../components/home/PestSelector.astro';
+import Process from '../components/home/Process.astro';
+import ServiceArea from '../components/home/ServiceArea.astro';
+import ServicesBento from '../components/home/ServicesBento.astro';
+import TrustReviews from '../components/home/TrustReviews.astro';
+import { homePage } from '../data/pages';
+---
+
+<BaseLayout title={homePage.seo.title} description={homePage.seo.description}>
+  <main id="main">
+    <Hero />
+    <PestSelector />
+    <ServicesBento />
+    <Process />
+    <MascotBand />
+    <TrustReviews />
+    <ServiceArea />
+    <FinalCta />
+  </main>
+</BaseLayout>

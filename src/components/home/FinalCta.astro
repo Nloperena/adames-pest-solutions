@@ -1,0 +1,62 @@
+---
+import CTAButton from '../CTAButton.astro';
+import { businessName, primaryPhoneHref, site } from '../../data/site';
+---
+
+<section class="section final-cta" aria-labelledby="final-cta-heading">
+  <div class="container">
+    <div class="final-cta__panel">
+      <h2 id="final-cta-heading">Ready to take your space back?</h2>
+      <p>Call now or send a quick message — we will help you schedule an inspection.</p>
+      <div class="final-cta__actions">
+        <CTAButton href={primaryPhoneHref()} variant="blue">{site.cta.callLabel}</CTAButton>
+        <CTAButton action="estimate" variant="ghost">{site.cta.estimateLabel}</CTAButton>
+      </div>
+      <p class="final-cta__phone">
+        Prefer talking it through? Call {businessName()} at{' '}
+        <a href={primaryPhoneHref()}>{site.phone.primary}</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta__panel {
+    padding: clamp(2rem, 5vw, 3.25rem);
+    background: var(--yellow);
+    border: 4px solid var(--blue);
+    box-shadow: 10px 10px 0 var(--blue);
+    text-align: center;
+  }
+
+  .final-cta__panel h2 {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .final-cta__panel p {
+    margin: 0 auto 1.5rem;
+    max-width: 40ch;
+    font-size: 1.1rem;
+  }
+
+  .final-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
+  }
+
+  .final-cta__phone {
+    margin: 1.25rem auto 0 !important;
+    font-size: 0.95rem !important;
+  }
+
+  .final-cta__phone a {
+    font-weight: 800;
+    text-decoration: underline;
+  }
+</style>

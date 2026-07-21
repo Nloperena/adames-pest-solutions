@@ -1,0 +1,130 @@
+---
+import { homePage } from '../../data/pages';
+import { legacyImages } from '../../data/legacyImages';
+import { site } from '../../data/site';
+
+const photo = legacyImages.worker;
+---
+
+<section class="section mascot" aria-labelledby="mascot-heading">
+  <div class="container">
+    <div class="mascot__panel">
+      <div class="mascot__copy">
+        <p class="section-label">Why {site.name}</p>
+        <h2 class="section-title" id="mascot-heading">{homePage.mascot.h2}</h2>
+        {homePage.mascot.body.map((paragraph) => <p>{paragraph}</p>)}
+        <div class="mascot__badges" aria-hidden="true">
+          <span>Local</span>
+          <span>Direct</span>
+          <span>Effective</span>
+        </div>
+      </div>
+
+      <div class="mascot__visual">
+        <figure class="mascot__frame">
+          <img
+            class="mascot__photo"
+            src={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption class="mascot__bubble">
+            “We’ll eliminate the problem that’s bugging you.”
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mascot__panel {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 1.5rem;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    background: var(--yellow);
+    border: 4px solid var(--blue);
+    box-shadow: 10px 10px 0 var(--blue);
+  }
+
+  .mascot__copy .section-title {
+    max-width: 14ch;
+  }
+
+  .mascot__copy p {
+    max-width: 42ch;
+  }
+
+  .mascot__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+  }
+
+  .mascot__badges span {
+    padding: 0.35rem 0.65rem;
+    border: 2px solid var(--ink);
+    background: var(--cream);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .mascot__visual {
+    min-height: 100%;
+  }
+
+  .mascot__frame {
+    position: relative;
+    margin: 0;
+    height: 100%;
+    min-height: 22rem;
+    overflow: hidden;
+    border: 3px solid var(--ink);
+    background: var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  .mascot__photo {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .mascot__bubble {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 0.75rem;
+    z-index: 1;
+    max-width: 16rem;
+    margin: 0;
+    padding: 0.75rem 0.9rem;
+    background: var(--white);
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--blue);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 860px) {
+    .mascot__panel {
+      grid-template-columns: 1fr;
+    }
+
+    .mascot__frame {
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>
