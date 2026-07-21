@@ -7,11 +7,12 @@ import { serviceAreas } from '../../data/serviceAreas';
   <div class="container areas__grid">
     <div>
       <p class="section-label">Coverage</p>
-      <h2 class="section-title" id="areas-heading">Protecting homes across Central Florida.</h2>
+      <h2 class="section-title" id="areas-heading">Serving St. Cloud & Central Florida.</h2>
       <p class="section-lead">
-        Local pest control for homes and businesses throughout Central Florida. Not sure if we cover your street? Ask — we will confirm before scheduling.
+        Looking for pest control near you in St. Cloud or elsewhere in Central Florida? Ask — we will
+        confirm your address before we schedule.
       </p>
-      <CTAButton action="contact">Check your service area →</CTAButton>
+      <CTAButton action="contact">Confirm my service area →</CTAButton>
     </div>
 
     <div class="areas__map panel">
@@ -94,8 +95,47 @@ import { serviceAreas } from '../../data/serviceAreas';
   }
 
   @media (max-width: 860px) {
+    .areas.section {
+      padding-block: 2rem;
+    }
+
     .areas__grid {
       grid-template-columns: 1fr;
+      gap: 1.15rem;
+    }
+
+    .areas .section-title {
+      max-width: none;
+      font-size: clamp(1.55rem, 6.5vw, 2rem);
+    }
+
+    .areas .section-lead {
+      font-size: 0.95rem;
+    }
+
+    .areas :global(.btn) {
+      width: 100%;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .areas__map {
+      padding: 0.75rem;
+    }
+
+    .service-area__image {
+      aspect-ratio: 16 / 9;
+    }
+
+    .areas__map ul {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .areas__map li {
+      padding: 0.55rem 0.6rem;
+      box-shadow: 2px 2px 0 var(--blue);
+      font-size: 0.85rem;
     }
   }
 </style>

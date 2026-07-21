@@ -2,13 +2,13 @@ import { businessName, site } from '../site';
 
 export const estimatePage = {
   seo: {
-    title: `Request an Estimate | ${businessName()}`,
+    title: `Free Pest Control Estimate in Central Florida | ${businessName()}`,
     description:
-      'Request a pest control estimate in Central Florida. Tell us what you are seeing and schedule an inspection with Adames Pest Solutions.',
+      'Request a free pest control estimate in St. Cloud and Central Florida. Describe the pest problem and schedule an inspection with Adames Pest Solutions.',
   },
-  h1: 'Request an Estimate',
+  h1: 'Get a free pest control estimate',
   intro: [
-    'Tell us what you are seeing at your home or business and we will follow up to schedule an inspection and estimate. We proudly serve customers throughout Central Florida.',
+    'Tell us what you are seeing — palmetto bugs, ants, termites, rodents, mosquitoes, or something else — and where (home or business in Central Florida). We will follow up to schedule an inspection.',
   ],
   formNote: site.formIntegration.message,
   directContact: {

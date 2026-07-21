@@ -1,35 +1,31 @@
 /**
  * Only areas explicitly mentioned on the legacy site.
- * No invented city doorway pages or Orlando/Kissimmee lists.
+ * Copy emphasizes St. Cloud + Central Florida (local niche) without inventing city doorways.
  */
 
 export type ServiceArea = {
   name: string;
   status: 'provisional' | 'unverified';
   source: string;
-  /** No city landing routes in this migration */
   href?: never;
 };
 
 export const serviceAreas: ServiceArea[] = [
   {
-    name: 'Central Florida',
-    status: 'provisional',
-    source: 'Sitewide legacy copy',
-  },
-  {
     name: 'St. Cloud, FL',
     status: 'provisional',
     source: 'Mentioned on /se-habla-espanol/',
   },
+  {
+    name: 'Central Florida',
+    status: 'provisional',
+    source: 'Sitewide legacy copy',
+  },
 ];
 
-/**
- * Trust strip — softer wording that does not invent licenses, ratings, or guarantees.
- */
 export const trustStrip = [
-  'Local Central Florida Service',
-  'Residential + Commercial',
-  'Clear Inspection Plans',
-  'Responsive Communication',
+  'St. Cloud & Central Florida',
+  'Homes + Businesses',
+  'Inspection-First Plans',
+  'Call or Free Estimate',
 ] as const;

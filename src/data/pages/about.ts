@@ -1,26 +1,33 @@
-import { businessName, site } from '../site';
+import { site } from '../site';
 
 export const aboutPage = {
   seo: {
-    title: `About Us | ${businessName()}`,
+    title: `About Adames Pest Solutions | Local Central Florida Exterminators`,
     description:
-      'Learn about Adames Pest Solutions — Central Florida pest control for homes and businesses with clear inspections and practical treatments.',
+      'Adames Pest Solutions is a local Central Florida pest control company serving St. Cloud and nearby homes and businesses with inspection-first service.',
   },
-  h1: 'About Us',
+  h1: 'Your local Central Florida pest team',
   intro: [
-    'We know what is bugging you. If you have a bug or pest problem at your home or business, depend on Adames Pest Solutions, Inc. for fast, effective, and affordable services.',
-    `${businessName(true)} serves property owners across Central Florida with clear inspections and treatments matched to the pest on your property.`,
+    'When Florida humidity brings palmetto bugs, ants, or mosquitoes to your door, you want a real local team — not a national call center script. Adames Pest Solutions, Inc. helps homeowners and businesses across Central Florida, including St. Cloud.',
+    'We inspect first, explain what we find, and treat the pest that is actually on your property.',
   ],
   sections: [
     {
-      heading: 'An experienced pest exterminator',
+      heading: 'Built for this climate',
       body: [
-        'It takes more to eliminate bugs than over-the-counter products. They may knock down a few pests and still miss lasting protection or other critters on the property.',
-        'We assess the infestation, choose a reliable approach for the pest you have, and work the plan through — whether the problem is small or widespread.',
+        'Central Florida does not get a long freeze that resets pest pressure. That is why “spray once and forget it” rarely works here.',
+        'We look at entry points, moisture, landscaping edges, and the habits of the pests people search for most in this area — then we match the method to the problem.',
         site.claims.satisfaction.value,
+      ],
+    },
+    {
+      heading: 'How we work with you',
+      body: [
+        'Call or send an estimate request. Tell us what you are seeing. We schedule an inspection, walk the property, and give you a clear next step — including when a phone call is the fastest path.',
+        'Se habla español. Ask for Spanish-language help when you reach the office.',
       ],
     },
   ],
   ctaNote:
-    'Contact us to schedule a pest inspection at your home or business. We proudly serve customers throughout Central Florida.',
+    'Ready for a local inspection in St. Cloud or Central Florida? Call or request a free estimate.',
 } as const;

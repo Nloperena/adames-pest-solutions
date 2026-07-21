@@ -70,5 +70,5 @@ export const formCopy = {
   successWhenLive:
     'Thanks — your message was sent. We will follow up during business hours.',
   consent:
-    'By sending this request you agree to be contacted about pest control services. We will not sell your information.',
+    'By sending this request you agree to be contacted about pest control services in Central Florida. We will not sell your information.',
 } as const;

@@ -2,13 +2,13 @@ import { businessName, site } from '../site';
 
 export const contactPage = {
   seo: {
-    title: `Contact Us | ${businessName()}`,
+    title: `Contact Pest Control in St. Cloud & Central Florida | ${businessName()}`,
     description:
-      'Contact Adames Pest Solutions for pest control in Central Florida. Call, email, or send a message to schedule an inspection.',
+      'Call or message Adames Pest Solutions for pest control in St. Cloud and Central Florida. Phone, email, and estimate requests during business hours.',
   },
-  h1: 'Contact Us',
+  h1: 'Contact your local Central Florida pest team',
   intro: [
-    'Reach the office during business hours or send a message with the form below. We respond to inspection and estimate requests across Central Florida.',
+    'Ready for an inspection in St. Cloud or nearby Central Florida? Call during business hours or send a message — tell us what pests you are seeing and where.',
   ],
   primary: {
     phone: site.phone.primary,

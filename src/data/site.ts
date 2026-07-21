@@ -21,7 +21,7 @@ export const site = {
    */
   spellingNote:
     'Design brief used “Adamas Pest Solutions”; the live site and logo use “Adames Pest Solutions, Inc.” Provisional decision: use Adames until client paperwork confirms otherwise.',
-  tagline: 'because we care',
+  tagline: 'Local pest control for Central Florida',
   url: 'https://adamespestsolutions.com',
   locale: 'en_US',
   region: 'Central Florida',

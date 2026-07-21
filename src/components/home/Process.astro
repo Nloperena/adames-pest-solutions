@@ -5,7 +5,7 @@ import { processSteps } from '../../data/process';
 <section class="section process" aria-labelledby="process-heading">
   <div class="container">
     <p class="section-label">How it works</p>
-    <h2 class="section-title" id="process-heading">We find it. Treat it. Keep it out.</h2>
+    <h2 class="section-title" id="process-heading">Inspect. Treat. Stay ahead of Florida pests.</h2>
 
     <ol class="process__steps">
       {
@@ -93,8 +93,74 @@ import { processSteps } from '../../data/process';
   }
 
   @media (max-width: 860px) {
+    .process {
+      padding-block: 2.25rem;
+    }
+
+    .process .section-title {
+      max-width: none;
+      font-size: clamp(1.55rem, 6.5vw, 2rem);
+    }
+
     .process__steps {
       grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 1.15rem;
+      border: 3px solid var(--ink);
+      overflow: hidden;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .process__step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: start;
+      gap: 0.75rem 0.9rem;
+      min-height: 0;
+      padding: 0.85rem 0.9rem;
+      border: 0;
+      border-bottom: 2px solid rgba(21, 21, 21, 0.12);
+      box-shadow: none;
+    }
+
+    .process__step:last-child {
+      border-bottom: 0;
+    }
+
+    .process__step:nth-child(2),
+    .process__step:nth-child(3) {
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    .process__step:nth-child(1) {
+      background: var(--yellow);
+    }
+
+    .process__step:nth-child(2) {
+      background: var(--white);
+    }
+
+    .process__step:nth-child(3) {
+      background: var(--cream);
+    }
+
+    .process__number {
+      font-size: 1.35rem;
+      line-height: 1.1;
+      color: var(--blue);
+      padding-top: 0.1rem;
+    }
+
+    .process__content h3 {
+      margin: 0 0 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .process__content p {
+      font-size: 0.88rem;
+      line-height: 1.35;
+      color: #5c564c;
     }
 
     .process__arrow {

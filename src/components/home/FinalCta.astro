@@ -6,15 +6,17 @@ import { businessName, primaryPhoneHref, site } from '../../data/site';
 <section class="section final-cta" aria-labelledby="final-cta-heading">
   <div class="container">
     <div class="final-cta__panel">
-      <h2 id="final-cta-heading">Ready to take your space back?</h2>
-      <p>Call now or send a quick message — we will help you schedule an inspection.</p>
+      <h2 id="final-cta-heading">Need a pest control company near you?</h2>
+      <p>
+        St. Cloud and Central Florida homeowners call when palmetto bugs, ants, termites, or mosquitoes
+        show up. Call now or request a free estimate.
+      </p>
       <div class="final-cta__actions">
         <CTAButton href={primaryPhoneHref()} variant="blue">{site.cta.callLabel}</CTAButton>
         <CTAButton action="estimate" variant="ghost">{site.cta.estimateLabel}</CTAButton>
       </div>
       <p class="final-cta__phone">
-        Prefer talking it through? Call {businessName()} at{' '}
-        <a href={primaryPhoneHref()}>{site.phone.primary}</a>.
+        Talk to {businessName()} at <a href={primaryPhoneHref()}>{site.phone.primary}</a>.
       </p>
     </div>
   </div>
@@ -39,7 +41,7 @@ import { businessName, primaryPhoneHref, site } from '../../data/site';
 
   .final-cta__panel p {
     margin: 0 auto 1.5rem;
-    max-width: 40ch;
+    max-width: 42ch;
     font-size: 1.1rem;
   }
 

@@ -17,13 +17,13 @@ import {
 
 const COPY: Record<ContactModalKind, { title: string; lead: string; hash: string }> = {
   estimate: {
-    title: 'Request an estimate',
-    lead: 'Tell us what you are seeing and we will follow up to schedule an inspection across Central Florida.',
+    title: 'Free estimate',
+    lead: 'Tell us the pest problem (palmetto bugs, ants, termites, rodents, mosquitoes…) and your St. Cloud or Central Florida address. We will follow up to schedule an inspection.',
     hash: '#estimate',
   },
   contact: {
     title: 'Contact us',
-    lead: 'Send a message to the office, or call now if you need help faster.',
+    lead: 'Message the office about pest control near you — or call now if you need help faster.',
     hash: '#contact',
   },
 };

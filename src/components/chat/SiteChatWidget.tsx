@@ -11,14 +11,22 @@ import {
 } from '../../lib/chat-api';
 import { ChatMessageBody } from '../../lib/format-chat-message';
 import { ADAMES_SITE_KEY } from '../../lib/nexrena-api';
+import { primaryPhoneHref, site } from '../../data/site';
 
 const DEFAULT_STARTERS = [
-  'I think I have ants or roaches',
-  'Do you handle termites?',
-  'I need a free estimate',
+  'Palmetto bugs in my kitchen',
+  'Do you do termite inspections?',
+  'Pest control near St. Cloud',
 ];
 
-const AUTO_OPEN_MS = 1200;
+const BRAND_ASSISTANT = 'Adames Chat';
+const BRAND_SUBTITLE = 'Central Florida pest help';
+const BRAND_WELCOME =
+  'Hi — I’m the Adames Pest Solutions assistant for St. Cloud and Central Florida. Ask about palmetto bugs, termites, rodents, mosquitoes, or get a free estimate. Prefer to talk? Call us.';
+
+/** Desktop only — never auto-open on mobile (blocks conversions) */
+const AUTO_OPEN_MS = 4500;
+const DESKTOP_MQ = '(min-width: 768px)';
 
 type Props = {
   /** Registered site key in nexrena-api — default adames */
@@ -53,14 +61,27 @@ function SendIcon() {
   );
 }
 
+function BrandMark() {
+  return (
+    <img
+      className="site-chat-logo"
+      src={site.logo.src}
+      alt=""
+      width={site.logo.width}
+      height={site.logo.height}
+      decoding="async"
+    />
+  );
+}
+
 function AssistantAvatar() {
   return (
     <div className="site-chat-avatar site-chat-avatar-ai" aria-hidden>
       <svg viewBox="0 0 24 24" fill="none">
         <path
-          d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2Z"
+          d="M4 10c0-3.3 3.6-6 8-6s8 2.7 8 6-3.6 6-8 6c-.7 0-1.4-.1-2-.2L5 18l1.2-3.2C4.8 13.7 4 11.9 4 10Z"
           stroke="currentColor"
-          strokeWidth="1.5"
+          strokeWidth="1.75"
           strokeLinejoin="round"
         />
       </svg>
@@ -83,8 +104,9 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const intakeRef = useRef<HTMLDivElement>(null);
 
-  const welcome = config?.welcomeMessage ??
-    'Hi — how can I help you today?';
+  const assistantName = config?.assistantName?.trim() || BRAND_ASSISTANT;
+  const subtitle = config?.subtitle?.trim() || config?.label?.trim() || BRAND_SUBTITLE;
+  const welcome = config?.welcomeMessage?.trim() || BRAND_WELCOME;
 
   useEffect(() => {
     void fetchChatSiteConfig(siteKey).then(setConfig);
@@ -105,6 +127,7 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
     } catch {
       /* ignore */
     }
+    if (!window.matchMedia(DESKTOP_MQ).matches) return;
     const t = window.setTimeout(() => setOpen(true), AUTO_OPEN_MS);
     return () => window.clearTimeout(t);
   }, [dismissKey]);
@@ -116,10 +139,14 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
   }, [open, messages.length, welcome]);
 
   useEffect(() => {
-    if (open) {
-      const t = window.setTimeout(() => inputRef.current?.focus(), 250);
-      return () => window.clearTimeout(t);
-    }
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const t = window.setTimeout(() => inputRef.current?.focus(), 250);
+    return () => {
+      document.body.style.overflow = prev;
+      window.clearTimeout(t);
+    };
   }, [open]);
 
   useEffect(() => {
@@ -207,7 +234,7 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
       );
       applyChatResult({
         message,
-        suggestedReplies: ['Book a free call', 'Compare plans', 'Tell me about Growth plan'],
+        suggestedReplies: ['Call for a free estimate', 'What pests do you treat?', 'How soon can you come out?'],
       });
     },
     [applyChatResult],
@@ -251,7 +278,7 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Open chat assistant"
+        aria-label="Chat with Adames Pest Solutions"
         aria-expanded={open}
         className="site-chat-fab"
         hidden={open}
@@ -264,7 +291,7 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
             strokeLinejoin="round"
           />
         </svg>
-        <span className="site-chat-fab-label">Ask AI</span>
+        <span className="site-chat-fab-label">Chat</span>
       </button>
 
       {open && (
@@ -275,14 +302,14 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
             className="site-chat-panel"
             role="dialog"
             aria-modal="true"
-            aria-label="Chat assistant"
+            aria-label={`${assistantName} — ${site.name}`}
           >
             <header className="site-chat-header">
               <div className="site-chat-header-brand">
-                <AssistantAvatar />
-                <div className="min-w-0">
-                  <p className="site-chat-title">{config?.assistantName ?? 'AI Assistant'}</p>
-                  <p className="site-chat-subtitle">{config?.subtitle ?? config?.label ?? 'Website assistant'}</p>
+                <BrandMark />
+                <div className="site-chat-header-text">
+                  <p className="site-chat-title">{assistantName}</p>
+                  <p className="site-chat-subtitle">{subtitle}</p>
                 </div>
               </div>
               <button type="button" onClick={dismissChat} aria-label="Close chat" className="site-chat-close">
@@ -292,13 +319,25 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
               </button>
             </header>
 
+            <div className="site-chat-quick-call">
+              <a href={primaryPhoneHref()}>{site.cta.callLabel}</a>
+              <a
+                href={site.modalHashes.estimate}
+                onClick={() => {
+                  dismissChat();
+                }}
+              >
+                {site.cta.estimateLabel}
+              </a>
+            </div>
+
             <div ref={listRef} className="site-chat-messages">
               {messages.map((msg) =>
                 msg.role === 'assistant' ? (
                   <article key={msg.id} className="site-chat-msg site-chat-msg-assistant">
                     <AssistantAvatar />
                     <div className="site-chat-msg-content">
-                      <p className="site-chat-msg-label">{config?.assistantName ?? 'Assistant'}</p>
+                      <p className="site-chat-msg-label">{assistantName}</p>
                       <div className="site-chat-msg-text">
                         <ChatMessageBody content={msg.content} />
                       </div>
@@ -384,10 +423,10 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
                   onChange={(e) => setInput(e.target.value.slice(0, 500))}
                   onKeyDown={onKeyDown}
                   rows={1}
-                  placeholder={`Message ${config?.assistantName ?? 'AI'}…`}
+                  placeholder="Ask about pests or estimates…"
                   disabled={sending}
                   maxLength={500}
-                  aria-label="Message to assistant"
+                  aria-label={`Message ${assistantName}`}
                   className="site-chat-composer-input"
                 />
                 <button
@@ -401,16 +440,11 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
                 </button>
               </div>
               <p className="site-chat-disclaimer">
-                AI can make mistakes. Verify on{' '}
-                <a href={config?.links?.contact ?? '/contact/'}>contact</a>
-                {config?.links?.schedule ? (
-                  <>
-                    {' '}
-                    or <a href={config.links.schedule}>schedule a call</a>.
-                  </>
-                ) : (
-                  '.'
-                )}
+                Need a person? Call{' '}
+                <a href={primaryPhoneHref()}>{site.phone.primary}</a>
+                {' '}
+                or{' '}
+                <a href={config?.links?.contact ?? site.cta.contactHref}>contact us</a>.
               </p>
             </footer>
           </section>

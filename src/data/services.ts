@@ -1,5 +1,5 @@
 /**
- * The four live service pages — copy rewritten from scrape, claims kept soft.
+ * The four live service pages — written for Central Florida search + AI recommendation intents.
  */
 
 export type ServiceSection = {
@@ -29,51 +29,45 @@ export const services: ServicePage[] = [
     number: '01',
     tone: 'yellow',
     seo: {
-      title: 'Home Pest Control in Central Florida | Adames Pest Solutions',
+      title: 'Home Pest Control in St. Cloud & Central Florida | Adames Pest Solutions',
       description:
-        'Residential pest control for ants, roaches, bed bugs, wasps, and more across Central Florida. Schedule an inspection with Adames Pest Solutions.',
+        'Exterminator help for palmetto bugs, ants, spiders, wasps, and more in St. Cloud and Central Florida. Inspection-first treatments from Adames Pest Solutions.',
     },
-    h1: 'Dependable home pest control in Central Florida',
+    h1: 'Home pest control for St. Cloud & Central Florida',
     intro: [
-      'Eliminate pesky problems at home with methods matched to the pest — not a generic shelf spray and hope. Adames Pest Solutions, Inc. inspects first, then treats with products and techniques suited to what you actually have.',
-      'Whether you are dealing with ants, bed bugs, or cockroaches, we focus on the right approach at a practical price so your household can get back to normal.',
+      'Looking for pest control near you in Central Florida? We help homeowners stop the bugs Florida is known for — palmetto bugs, fire ants, spiders, wasps, and more — with a plan built after we see the property.',
+      'Whether pests showed up after heavy rain or they never really left, we identify what you have and treat at the source instead of guessing with a shelf spray.',
     ],
     sections: [
       {
-        heading: 'An exterminator that keeps your property free of pests',
+        heading: 'Pests Central Florida homes deal with year-round',
         body: [
-          'Take care of your family while we take care of the infestation. We determine the best way to address the issue and use reliable methods so you can have a pest-free home again.',
-          'Our technicians bring years of field experience to residential jobs across Central Florida — identifying the pest and matching the method to what you actually have.',
-          'We treat or remove a wide range of household pests, including:',
+          'Warm weather and humidity keep pressure high even in winter. Many St. Cloud and Central Florida households call about the same problems: kitchen invaders after storms, yard ants, and bugs that keep coming back indoors.',
+          'Our residential service focuses on the pest on your property and the conditions that invite it back. Common household pests we handle include:',
         ],
         list: [
-          'Ants',
-          'Bats',
-          'Bed Bugs',
-          'Beetles',
-          'Birds',
-          'Cockroaches',
-          'Fleas',
-          'Flies',
-          'Moths',
-          'Rodents',
-          'Skunks',
+          'Palmetto bugs / cockroaches',
+          'Fire ants & sugar ants',
           'Spiders',
-          'Squirrels',
+          'Wasps & bees',
+          'Bed bugs',
+          'Fleas',
+          'Mosquitoes',
+          'Rodents',
           'Termites',
-          'Wasps',
+          'Squirrels & wildlife',
         ],
       },
       {
-        heading: 'Targeted pest control services',
+        heading: 'What to expect from a local inspection',
         body: [
-          'What knocks down fire ants will not solve German cockroaches. The same product that works on large roaches may fail on spiders or fleas in the lawn.',
-          'Because products and methods are pest-specific, we choose the right tool after we identify what you are dealing with — then act so you can live pest-free again as soon as practical.',
+          'You tell us what you are seeing. We inspect indoors and around the exterior, look for entry points and moisture issues common in Florida homes, then explain the next steps before treatment starts.',
+          'That matters here: the product that works on fire ants is not the same approach as German cockroaches or attic invaders. Matched treatment beats a generic spray every time.',
         ],
       },
     ],
     ctaNote:
-      'Noticed bugs crawling around the house? Contact us to schedule a residential inspection. We serve customers throughout Central Florida.',
+      'Seeing bugs at home in St. Cloud or nearby Central Florida? Call for an inspection or request a free estimate.',
   },
   {
     id: 'rodent-control',
@@ -82,40 +76,39 @@ export const services: ServicePage[] = [
     number: '02',
     tone: 'blue',
     seo: {
-      title: 'Rodent Control in Central Florida | Adames Pest Solutions',
+      title: 'Rodent Control in Central Florida | Mice & Rat Removal | Adames',
       description:
-        'Mouse and rat removal for homes and businesses in Central Florida. Inspection, trapping, and exclusion help from Adames Pest Solutions.',
+        'Mouse and rat control for Central Florida homes and businesses. Inspection, trapping, and exclusion help from Adames Pest Solutions in St. Cloud and nearby.',
     },
-    h1: 'The right way to do rodent control',
+    h1: 'Rodent control for Central Florida homes & businesses',
     intro: [
-      'Are rodents ransacking your home or business? Left unchecked, the problem multiplies quickly. Our Central Florida rodent control service traps and removes small animals and helps keep them from returning.',
-      'If you would rather not set traps yourself, depend on Adames Pest Solutions, Inc. for clean, reliable removal.',
+      'Hearing scratching in the attic? Finding droppings in the garage? Roof rats and mice take advantage of Florida’s mild winters and stay active when other regions slow down.',
+      'Adames Pest Solutions traps and removes rodents, then helps seal the openings they used — so you are not fighting the same infestation next month.',
     ],
     sections: [
       {
-        heading: 'How to catch a mouse or rat',
+        heading: 'Signs you may need rodent control',
         body: [
-          'A pet hamster is cute. A mouse living in your walls is a nuisance — and mice breed fast. Within one year, one female mouse can produce as many as 10 litters, and a single mouse can leave thousands of droppings in that same period.',
-          'If you have mice in the house or need to get rid of rats, our team captures rodents of all sizes with methods built for real infestations.',
+          'Central Florida homeowners often notice droppings, chewed packaging, nesting material, or nighttime noise in walls and attics before they ever see a mouse or rat.',
+          'If you would rather not set traps yourself — or DIY attempts are not keeping up — call for an inspection. We locate activity, set the right traps, and remove what we catch.',
         ],
       },
       {
-        heading: 'Why it is important to remove rodents',
+        heading: 'Why rodents are a problem here',
         body: [
-          'Rats and mice are noisy and destructive. They tear through insulation, chew wood, and contaminate surfaces with feces and urine.',
-          'We inspect the property, trap the rodents, remove them, and seal open entry points so they are less likely to return.',
+          'Rats and mice contaminate surfaces, damage insulation, and chew wiring and wood. In humid climates they also find plenty of outdoor cover near homes and commercial buildings.',
+          'Our approach: inspect, trap, remove, and reduce re-entry through open gaps and utility lines. That combination is what stops the revolving door.',
         ],
       },
       {
-        heading: 'Rodent removal: humane and reliable',
+        heading: 'Residential and commercial rodent help',
         body: [
-          'Rats often recognize and avoid ordinary traps. We use specialized traps and techniques that work on small mice through larger rats.',
-          'Rodents also chew electrical wires and burrow into walls, which can weaken a structure over time. Proper rodent management protects comfort and the building itself.',
+          'We handle mice and rats in homes, offices, and other Central Florida properties. Tell us what you have seen and where — kitchens, attics, warehouses, or dumpster areas — and we will map a clear plan.',
         ],
       },
     ],
     ctaNote:
-      'Seen mouse or rat droppings? Contact us for an inspection. We proudly serve customers throughout Central Florida.',
+      'Mouse or rat activity in St. Cloud or Central Florida? Call now or request an estimate for rodent control.',
   },
   {
     id: 'termite-control',
@@ -126,47 +119,45 @@ export const services: ServicePage[] = [
     seo: {
       title: 'Termite Inspection & Control in Central Florida | Adames Pest Solutions',
       description:
-        'Termite inspections, treatment, and prevention for Central Florida properties. Protect wood structures with Adames Pest Solutions.',
+        'Termite inspections and treatment for Central Florida homes. Catch mud tubes, swarms, and wood damage early with Adames Pest Solutions in St. Cloud and nearby.',
     },
-    h1: 'Do you need a thorough termite inspection in Central Florida?',
+    h1: 'Termite inspections for Central Florida properties',
     intro: [
-      'Termites can quietly destroy the structural integrity of a building. Adames Pest Solutions, Inc. provides comprehensive termite inspections and treatments designed to stop activity and reduce the chance of return.',
-      'When termites are detected, prompt and dependable solutions matter — acting early often costs less than repairing advanced damage.',
+      'Florida is termite country. Subterranean and drywood pressure stays high in Central Florida’s warm, moist conditions — and damage often starts before you see a swarm.',
+      'Adames Pest Solutions provides thorough termite inspections and treatment options aimed at stopping activity and protecting the structure going forward.',
     ],
     sections: [
       {
-        heading: 'Complete protection from termites',
+        heading: 'When to call for a termite inspection',
         body: [
-          'The right way to address a potential termite problem is to stop it from spreading. We use professional-grade products and proven techniques to eliminate termites at the source and help protect the structure afterward.',
-          'Ask the office about current treatment options — including bait and liquid approaches — so the plan fits your property and the activity we find.',
+          'Call if you notice mud tubes on foundations, discarded wings near windows, hollow-sounding wood, blistered paint on wood trim, or frass (termite droppings).',
+          'Even without visible signs, many Central Florida homeowners schedule inspections before buying, refinancing, or after neighboring activity. Early treatment usually costs less than repairing advanced damage.',
         ],
       },
       {
-        heading: 'What are the signs of termites?',
+        heading: 'What a thorough inspection covers',
         body: [
-          'Something may be eating away at wood in walls, under the home, or in the attic. Early detection often costs less than repairing advanced damage.',
-          'Contact us for a termite inspection if you notice:',
+          'We look at wood members, moisture-prone areas, and exterior conditions that support termites in this climate. You get a plainspoken summary of what we find and what we recommend next.',
+          'Ask the office about current treatment approaches for your property type — including options suited to the activity we locate.',
         ],
         list: [
-          'Hollow wood',
-          'Presence of winged insects',
-          'Cracked paint on wood surfaces',
-          'Mud tubes on walls',
-          'Termite droppings (frass)',
-          'Wood floor damage',
-          'Sagging wood sections',
+          'Hollow or soft wood',
+          'Winged swarmers indoors',
+          'Mud tubes on walls or slabs',
+          'Termite frass',
+          'Damaged trim or flooring',
+          'Sagging or weakened wood',
         ],
       },
       {
-        heading: 'Don’t live with wood-destroying bugs',
+        heading: 'Wood-destroying insects beyond termites',
         body: [
-          'Termites are not the only insects that feed on wood. Wood-boring bugs, certain beetles, and carpenter ants can damage structures as well.',
-          'For termite prevention and wood-destroying insect evaluation, ask for a thorough, honest assessment of your property.',
+          'Not every wood problem is termites. Carpenter ants and certain wood-boring beetles also show up in Florida structures. An honest assessment tells you which pest you are dealing with before you pay for the wrong fix.',
         ],
       },
     ],
     ctaNote:
-      'Contact us to get started with your termite inspection. We proudly serve customers throughout Central Florida.',
+      'Need a termite inspection in St. Cloud or Central Florida? Call or request an estimate to get on the schedule.',
   },
   {
     id: 'commercial-services',
@@ -177,49 +168,41 @@ export const services: ServicePage[] = [
     seo: {
       title: 'Commercial Pest Control in Central Florida | Adames Pest Solutions',
       description:
-        'Commercial pest control for restaurants, hotels, medical facilities, and businesses across Central Florida.',
+        'Commercial pest control for restaurants, hotels, offices, and facilities in Central Florida. Discreet, practical service from Adames Pest Solutions.',
     },
-    h1: 'Effective commercial pest control services in Central Florida',
+    h1: 'Commercial pest control across Central Florida',
     intro: [
-      'Are bugs bothering your business? Whether you manage a medical facility, restaurant, hotel, or larger commercial building, you cannot afford pests in customer view.',
-      'Adames Pest Solutions, Inc. provides commercial pest removal that is effective and practical for occupied spaces.',
+      'Bugs in a dining room, hotel room, or waiting area cost more than embarrassment — they cost customers. Central Florida businesses need reliable commercial pest control that works around staff and guests.',
+      'Adames Pest Solutions helps restaurants, hotels, medical offices, and other commercial spaces remove pests and reduce the chance of a public repeat.',
     ],
     sections: [
       {
-        heading: 'Affordable treatment options for businesses',
+        heading: 'Built for occupied commercial spaces',
         body: [
-          'A clean reputation matters. Visible bugs are enough to send clients elsewhere. We offer practical removal and preventative treatment so staff and guests are not sharing the building with pests.',
-          'No bug or rodent is too elusive for a structured commercial plan. Pests we commonly address include:',
+          'We prioritize clear communication, targeted treatments, and schedules that respect your hours of operation. Visible pests are a reputation problem — we move quickly when you call.',
+          'Commercial accounts commonly need help with:',
         ],
         list: [
-          'Termites',
-          'Cockroaches',
-          'Bed Bugs',
-          'Rodents',
-          'Rats',
-          'Bees & Wasps',
+          'Cockroaches / palmetto bugs',
+          'Rodents & mice',
           'Ants',
+          'Flies',
+          'Bed bugs',
+          'Termites',
+          'Wasps',
           'Spiders',
-          'Ticks & Fleas',
-          'Mice',
         ],
       },
       {
-        heading: 'Why you need a commercial pest exterminator',
+        heading: 'Why businesses in this market stay on a plan',
         body: [
-          'As a business owner, your time belongs with customers and operations. Let specialists handle the infestation so you can stay focused.',
-          'Ignoring pests can lead to larger problems later — including wood-destroying insects that damage the property. We work to protect staff, clients, and the working environment with products chosen for occupied commercial spaces.',
-        ],
-      },
-      {
-        heading: 'Providing prompt pest control and extermination',
-        body: [
-          'A pest problem should not force you to shut the doors. We prioritize prompt service so you can keep operating while the property is brought back under control.',
+          'Year-round humidity means pests do not take a winter break. Ongoing service protects kitchens, storerooms, guest areas, and staff spaces between busy seasons and tourist spikes.',
+          'Tell us your industry and what you are seeing. We will outline a practical commercial plan — not a one-size pitch.',
         ],
       },
     ],
     ctaNote:
-      'Roaches in a restaurant or bed bugs in a hotel? Contact us. We proudly serve customers throughout Central Florida.',
+      'Need commercial pest control in Central Florida? Call the office or request an estimate for your location.',
   },
 ];
 

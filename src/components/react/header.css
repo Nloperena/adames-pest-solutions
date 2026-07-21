@@ -25,7 +25,7 @@
 }
 
 .site-header__logo img {
-  width: clamp(7.5rem, 14vw, 9.5rem);
+  width: clamp(6.25rem, 14vw, 9.5rem);
   height: auto;
 }
 
@@ -141,8 +141,22 @@
 }
 
 @media (max-width: 860px) {
+  .site-header {
+    --header-h: 4.25rem;
+  }
+
   .site-header__bar {
     grid-template-columns: 1fr auto;
+    gap: 0.55rem;
+    padding-block: 0.45rem;
+  }
+
+  .site-header__logo {
+    padding: 0.15rem 0.35rem;
+  }
+
+  .site-header__logo img {
+    width: 5.75rem;
   }
 
   .site-header__nav,
@@ -154,5 +168,19 @@
   .site-header__call-icon,
   .site-header__menu-btn {
     display: grid;
+    width: 2.85rem;
+    height: 2.85rem;
+  }
+
+  .site-header__drawer {
+    padding: 0.75rem 1rem calc(1.25rem + env(safe-area-inset-bottom));
+  }
+
+  .site-header__drawer a,
+  .site-header__drawer button[data-open-contact] {
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    padding-block: 0.85rem;
   }
 }

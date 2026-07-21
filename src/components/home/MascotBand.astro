@@ -1,4 +1,5 @@
 ---
+import CTAButton from '../CTAButton.astro';
 import { homePage } from '../../data/pages';
 import { legacyImages } from '../../data/legacyImages';
 import { site } from '../../data/site';
@@ -18,6 +19,9 @@ const photo = legacyImages.worker;
           <span>Direct</span>
           <span>Effective</span>
         </div>
+        <div class="mascot__cta">
+          <CTAButton action="estimate" variant="blue">{site.cta.estimateLabel} →</CTAButton>
+        </div>
       </div>
 
       <div class="mascot__visual">
@@ -32,7 +36,7 @@ const photo = legacyImages.worker;
             decoding="async"
           />
           <figcaption class="mascot__bubble">
-            “We’ll eliminate the problem that’s bugging you.”
+            “Florida pests don’t quit — neither do we.”
           </figcaption>
         </figure>
       </div>
@@ -55,7 +59,7 @@ const photo = legacyImages.worker;
     max-width: 14ch;
   }
 
-  .mascot__copy p {
+  .mascot__copy > p:not(.section-label) {
     max-width: 42ch;
   }
 
@@ -75,6 +79,10 @@ const photo = legacyImages.worker;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+  }
+
+  .mascot__cta {
+    display: none;
   }
 
   .mascot__visual {
@@ -117,14 +125,59 @@ const photo = legacyImages.worker;
     font-weight: 700;
   }
 
+  /* Mobile: tight yellow band — no tall photo stack */
   @media (max-width: 860px) {
-    .mascot__panel {
-      grid-template-columns: 1fr;
+    .mascot.section {
+      padding-block: 1.75rem;
     }
 
-    .mascot__frame {
-      min-height: 0;
-      aspect-ratio: 4 / 3;
+    .mascot__panel {
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      padding: 1.1rem 1rem 1.15rem;
+      box-shadow: 5px 5px 0 var(--blue);
+    }
+
+    .mascot__copy .section-label {
+      margin-bottom: 0.45rem;
+    }
+
+    .mascot__copy .section-title {
+      max-width: none;
+      margin-bottom: 0.55rem;
+      font-size: clamp(1.55rem, 7vw, 2.1rem);
+    }
+
+    .mascot__copy > p:not(.section-label) {
+      max-width: none;
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .mascot__badges {
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+    }
+
+    .mascot__badges span {
+      padding: 0.28rem 0.5rem;
+      font-size: 0.65rem;
+    }
+
+    .mascot__cta {
+      display: block;
+      margin-top: 0.95rem;
+    }
+
+    .mascot__cta :global(.btn) {
+      width: 100%;
+      justify-content: center;
+      min-height: 2.85rem;
+    }
+
+    .mascot__visual {
+      display: none;
     }
   }
 </style>

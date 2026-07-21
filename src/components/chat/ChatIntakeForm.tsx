@@ -91,14 +91,14 @@ export function ChatIntakeForm({
         />
       </label>
       <label className="site-chat-intake-label">
-        Company <span className="site-chat-intake-optional">optional</span>
+        Property / business <span className="site-chat-intake-optional">optional</span>
         <input
           name="company"
           type="text"
           maxLength={80}
           defaultValue={prefill?.company ?? ''}
           className="site-chat-intake-input"
-          placeholder="Business name"
+          placeholder="Home or business name"
         />
       </label>
       <label className="site-chat-intake-label">

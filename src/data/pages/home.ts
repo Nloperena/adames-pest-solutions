@@ -2,34 +2,34 @@ import { businessName } from '../site';
 
 export const homePage = {
   seo: {
-    title: `Pest Control Services | Central FL - ${businessName(true)}`,
+    title: `Pest Control in St. Cloud & Central Florida | ${businessName(true)}`,
     description:
-      'Residential and commercial pest control across Central Florida. Clear inspections, practical treatments, and free estimates from Adames Pest Solutions.',
+      'Local pest control for St. Cloud and Central Florida homes. Palmetto bugs, ants, termites, rodents, and mosquitoes — call Adames Pest Solutions for an inspection.',
   },
   hero: {
-    label: 'Central Florida Pest Control',
-    h1: 'Pests have met their match.',
-    lead: 'Local pest control for homes and businesses. Call now or request a free estimate.',
+    label: 'St. Cloud & Central Florida',
+    h1: 'Florida pests. Local help.',
+    lead: 'Palmetto bugs, fire ants, termites, and mosquitoes don’t take a season off here. Call for an inspection or request a free estimate.',
   },
   welcome: {
-    h2: 'Welcome',
+    h2: 'Pest control built for Central Florida living',
     body: [
-      'Nothing bugs property owners more than invasive insects and pests. For commercial and residential pest control in Central Florida, you can depend on Adames Pest Solutions, Inc.',
-      'From roaches and termites to rodents and raccoons, we focus on removing the problem that is bothering you. Schedule an inspection at your home or business today.',
+      'Humidity, rain, and warm nights keep pests active year-round in St. Cloud and across Central Florida. When you see palmetto bugs in the kitchen, ants after a storm, or mosquitoes in the yard, you need a local team that knows this climate.',
+      'Adames Pest Solutions, Inc. inspects first, treats the pest you actually have, and helps you keep them from walking right back in.',
     ],
   },
   trusted: {
-    h2: 'A trusted pest control company',
+    h2: 'Why Central Florida homeowners call us',
     body: [
-      'Store-bought sprays and basic traps often provide only marginal results. When pests keep returning, you need a team that knows how to address the source.',
-      'Our technicians bring years of field experience to homes and businesses across Central Florida — identifying the pest, choosing the right approach, and following through.',
-      'We also aim to keep services affordable — high-quality work at competitive rates for homes and businesses in the area.',
+      'Store sprays knock down a few bugs and miss the nest, the entry points, or the next wave after a rainy week.',
+      'We start with a clear look at your property, explain what we find in plain language, and build a plan that fits Florida homes — not a one-spray-fits-all pitch.',
+      'Need someone today? Call the office or send a quick estimate request. We serve homes and businesses throughout Central Florida, including St. Cloud.',
     ],
   },
   mascot: {
-    h2: 'The bad news for bugs.',
+    h2: 'The bad news for Florida bugs.',
     body: [
-      `${businessName()} combines local Central Florida service, responsive communication, and treatments matched to the property — not a one-spray-fits-all pitch.`,
+      `${businessName()} is your local option for residential and commercial pest control in Central Florida — direct answers, practical treatments, and follow-through after the visit.`,
     ],
   },
 } as const;

@@ -7,6 +7,7 @@ import '../components/react/contact-modal.css';
 import SEOHead from '../components/SEOHead.astro';
 import SiteHeader from '../components/react/SiteHeader';
 import SiteFooter from '../components/SiteFooter.astro';
+import MobileDock from '../components/MobileDock.astro';
 import ContactModal from '../components/react/ContactModal';
 import { SiteChatWidget } from '../components/chat/SiteChatWidget';
 import { ADAMES_SITE_KEY } from '../lib/nexrena-api';
@@ -70,11 +71,12 @@ const schemaPayload = schema ?? localBusinessSchema;
     <SEOHead title={title} description={description} ogImage={ogImage} noindex={noindex} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaPayload)} />
   </head>
-  <body>
+  <body class="has-mobile-dock">
     <a class="skip-link" href="#main">Skip to content</a>
     <SiteHeader client:load />
     <slot />
     <SiteFooter />
+    <MobileDock />
     <ContactModal client:load />
     <SiteChatWidget client:only="react" siteKey={ADAMES_SITE_KEY} />
   </body>

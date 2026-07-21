@@ -145,8 +145,28 @@
     display: none;
   }
 
+  .contact-modal__top-inner {
+    min-height: 3.75rem;
+    padding-block: 0.45rem;
+  }
+
   .contact-modal__top-actions .btn {
     padding-inline: 0.85rem;
     font-size: 0.8rem;
+    min-height: 2.85rem;
+  }
+
+  .contact-modal__body {
+    width: min(100% - 1.5rem, 40rem);
+    padding: 1.25rem 0 calc(5.5rem + env(safe-area-inset-bottom));
+  }
+
+  .contact-modal__title {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  .contact-modal__lead {
+    font-size: 1rem;
+    margin-bottom: 1.15rem;
   }
 }

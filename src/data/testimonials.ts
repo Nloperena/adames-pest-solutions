@@ -1,6 +1,5 @@
 /**
- * No public reviews were present on the crawled site.
- * Invented Maria/James-style quotes and Google ratings have been removed.
+ * Soft trust messaging for Central Florida — no invented ratings or licenses.
  */
 
 export type Testimonial = {
@@ -17,23 +16,20 @@ export const reviewsStatus = {
   note: 'No customer testimonials or Google rating/count were found in the crawl. Do not invent reviews.',
 } as const;
 
-/**
- * Soft trust messaging — no license numbers or guarantee claims.
- */
 export const trustBadges = [
   {
     id: 'local',
     title: 'Central Florida local',
-    detail: 'Homes and businesses across the region we serve.',
+    detail: 'St. Cloud and surrounding Central Florida homes and businesses.',
   },
   {
-    id: 'plan',
-    title: 'Clear next steps',
-    detail: 'Inspection first, then a plainspoken treatment plan.',
+    id: 'climate',
+    title: 'Built for this climate',
+    detail: 'Year-round humidity means year-round pest pressure — we plan for that.',
   },
   {
-    id: 'responsive',
-    title: 'Direct communication',
-    detail: 'Call, email, or send a message — we respond during business hours.',
+    id: 'direct',
+    title: 'Call or estimate fast',
+    detail: 'Talk to the office or send a form — we respond during business hours.',
   },
 ] as const;

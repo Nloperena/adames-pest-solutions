@@ -6,9 +6,9 @@ import PestIcon from '../icons/PestIcon';
 <section class="section pests" id="pest-library" aria-labelledby="pests-heading">
   <div class="container">
     <p class="section-label">Pest Library</p>
-    <h2 class="section-title" id="pests-heading">What’s bugging you?</h2>
+    <h2 class="section-title" id="pests-heading">What’s bugging your Florida home?</h2>
     <p class="section-lead">
-      Pick a pest to jump into the matching service page and see how we can help.
+      Pick the pest locals ask about most — then jump to the service that fits.
     </p>
 
     <ul class="pests__grid">
@@ -16,20 +16,22 @@ import PestIcon from '../icons/PestIcon';
         pests.map((pest) => (
           <li>
             <a class="pest-card" href={pest.href}>
-              <div class="pest-card__bg">
-                <PestIcon 
-                  name={pest.id} 
-                  className="pest-card__img" 
+              <div class="pest-card__bg" aria-hidden="true">
+                <PestIcon
+                  name={pest.id}
+                  className="pest-card__img"
                   style={{ objectFit: 'cover', mixBlendMode: 'multiply', width: '100%', height: '100%' }}
-                  client:visible 
+                  client:visible
                 />
               </div>
               <div class="pest-card__content">
                 <div class="pest-card__label">
                   <span class="pest-card__name">{pest.name}</span>
+                  <span class="pest-card__desc">{pest.description}</span>
                   <span class="pest-card__more">Learn more →</span>
                 </div>
               </div>
+              <span class="pest-card__chevron" aria-hidden="true">›</span>
             </a>
           </li>
         ))
@@ -116,14 +118,16 @@ import PestIcon from '../icons/PestIcon';
     border-radius: var(--radius);
     padding: 0.75rem 1rem;
     width: 100%;
-    box-shadow: 4px 4px 0px var(--ink);
-    transition: transform 120ms ease, box-shadow 120ms ease;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition:
+      transform 120ms ease,
+      box-shadow 120ms ease;
     text-align: center;
   }
 
   .pest-card:hover .pest-card__label {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
   }
 
   .pest-card__name {
@@ -132,6 +136,10 @@ import PestIcon from '../icons/PestIcon';
     line-height: 1;
     text-transform: uppercase;
     color: var(--ink);
+  }
+
+  .pest-card__desc {
+    display: none;
   }
 
   .pest-card__more {
@@ -143,20 +151,125 @@ import PestIcon from '../icons/PestIcon';
     color: var(--blue);
   }
 
+  .pest-card__chevron {
+    display: none;
+  }
+
   .pest-card:hover .pest-card__more {
     text-decoration: underline;
     text-underline-offset: 0.2em;
   }
 
+  /* Amazon-style compact product list on phones */
   @media (max-width: 900px) {
-    .pests__grid {
-      grid-template-columns: repeat(2, 1fr);
+    .pests .section-lead {
+      margin-bottom: 0;
     }
-  }
 
-  @media (max-width: 480px) {
     .pests__grid {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1.25rem;
+      border: 3px solid var(--ink);
+      background: var(--white);
+      box-shadow: 4px 4px 0 var(--ink);
+      overflow: hidden;
+    }
+
+    .pests__grid > li {
+      border-bottom: 2px solid rgba(21, 21, 21, 0.12);
+    }
+
+    .pests__grid > li:last-child {
+      border-bottom: 0;
+    }
+
+    .pest-card {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
+      aspect-ratio: auto;
+      min-height: 0;
+      padding: 0.65rem 0.7rem;
+      border: 0;
+      border-radius: 0;
+      background: var(--white);
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .pest-card:hover,
+    .pest-card:focus-visible {
+      transform: none;
+      box-shadow: none;
+      background: var(--yellow);
+    }
+
+    .pest-card__bg {
+      position: relative;
+      inset: auto;
+      flex-shrink: 0;
+      width: 3.75rem;
+      height: 3.75rem;
+      border: 2px solid var(--ink);
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .pest-card__bg :global(img),
+    .pest-card__bg :global(svg) {
+      transform: none !important;
+    }
+
+    .pest-card__content {
+      flex: 1;
+      height: auto;
+      padding: 0;
+      align-items: stretch;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .pest-card__label {
+      align-items: flex-start;
+      gap: 0.2rem;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      text-align: left;
+    }
+
+    .pest-card:hover .pest-card__label {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .pest-card__name {
+      font-size: 1.05rem;
+    }
+
+    .pest-card__desc {
+      display: block;
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.3;
+      color: #5c564c;
+    }
+
+    .pest-card__more {
+      display: none;
+    }
+
+    .pest-card__chevron {
+      display: block;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      line-height: 1;
+      color: var(--blue);
     }
   }
 </style>
