@@ -133,20 +133,18 @@ export default function LeadForm({ kind, idPrefix = '', compact = false }: Props
         <FormSuccess kind={kind} compact={compact} />
       ) : (
         <form onSubmit={onSubmit} noValidate>
-          <div className="lead-form__hp" aria-hidden="true">
-            <label htmlFor={`${idPrefix}${definition.id}-${HONEYPOT_KEY}`}>Company fax</label>
-            <input
-              id={`${idPrefix}${definition.id}-${HONEYPOT_KEY}`}
-              type="text"
-              name={HONEYPOT_KEY}
-              tabIndex={-1}
-              autoComplete="off"
-              value={values[HONEYPOT_KEY] ?? ''}
-              onChange={(e) =>
-                setValues((prev) => ({ ...prev, [HONEYPOT_KEY]: e.target.value }))
-              }
-            />
-          </div>
+          <input
+            type="text"
+            name={HONEYPOT_KEY}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="lead-form__hp"
+            value={values[HONEYPOT_KEY] ?? ''}
+            onChange={(e) =>
+              setValues((prev) => ({ ...prev, [HONEYPOT_KEY]: e.target.value }))
+            }
+          />
 
           {definition.fields.map((field) => {
             const id = `${idPrefix}${definition.id}-${field.name}`;
