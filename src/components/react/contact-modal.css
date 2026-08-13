@@ -107,50 +107,27 @@
 }
 
 .contact-modal__body {
-  width: min(100% - 2rem, 40rem);
-  padding: clamp(1.75rem, 4vw, 3rem) 0 3.5rem;
-}
-
-.contact-modal__eyebrow {
-  margin: 0 0 0.75rem;
-  font-family: var(--font-display);
-  font-size: clamp(1.35rem, 3vw, 1.85rem);
-  line-height: 0.95;
-  text-transform: uppercase;
-  color: var(--blue);
+  width: min(100% - 2rem, 34rem);
+  padding: clamp(1rem, 2.5vw, 1.5rem) 0 2.25rem;
 }
 
 .contact-modal__title {
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.45rem;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 7vw, 3.6rem);
-  line-height: 0.92;
+  font-size: clamp(1.85rem, 5vw, 2.55rem);
+  line-height: 0.95;
   text-transform: uppercase;
 }
 
 .contact-modal__lead {
-  margin: 0 0 1.5rem;
-  max-width: 42ch;
-  font-size: 1.0625rem;
+  margin: 0 0 1rem;
+  max-width: 46ch;
+  font-size: 0.95rem;
 }
 
-.contact-modal__callout {
-  display: grid;
-  gap: 0.75rem;
-  margin: 0 0 1.5rem;
-  padding: 1rem 1.1rem;
-  border: 3px solid var(--ink);
-  background: var(--yellow);
-  box-shadow: var(--shadow-sm);
-}
-
-.contact-modal__callout p {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+.contact-modal__lead a {
+  color: var(--blue);
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 @media (max-width: 720px) {
@@ -170,16 +147,16 @@
   }
 
   .contact-modal__body {
-    width: min(100% - 1.5rem, 40rem);
-    padding: 1.25rem 0 calc(5.5rem + env(safe-area-inset-bottom));
+    width: min(100% - 1.5rem, 34rem);
+    padding: 0.9rem 0 calc(5rem + env(safe-area-inset-bottom));
   }
 
   .contact-modal__title {
-    font-size: clamp(2rem, 9vw, 2.75rem);
+    font-size: clamp(1.7rem, 7vw, 2.15rem);
   }
 
   .contact-modal__lead {
-    font-size: 1rem;
-    margin-bottom: 1.15rem;
+    font-size: 0.92rem;
+    margin-bottom: 0.85rem;
   }
 }

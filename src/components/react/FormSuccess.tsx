@@ -2,13 +2,18 @@ import { primaryEmail, primaryEmailHref, primaryPhone, primaryPhoneHref, busines
 
 type Props = {
   kind: 'contact' | 'estimate';
+  compact?: boolean;
 };
 
-export default function FormSuccess({ kind }: Props) {
+export default function FormSuccess({ kind, compact = false }: Props) {
   const title = kind === 'estimate' ? 'Estimate request sent' : 'Message sent';
 
   return (
-    <div className="form-success" role="status" aria-live="polite">
+    <div
+      className={`form-success${compact ? ' form-success--compact' : ''}`}
+      role="status"
+      aria-live="polite"
+    >
       <div className="form-success__burst" aria-hidden="true">
         <span />
         <span />

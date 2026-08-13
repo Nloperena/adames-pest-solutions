@@ -1,5 +1,6 @@
 ---
 import ContentPage from '../layouts/ContentPage.astro';
+import LeadForm from '../components/react/LeadForm';
 import { contactPage } from '../data/pages';
 import {
   businessName,
@@ -23,34 +24,56 @@ import {
   mediaHeight={1350}
   formAction="contact"
   hideCta={true}
+  compactHero={true}
 >
-  <div class="contact-facts panel">
-    <h2>Office contact</h2>
-    <p>
-      Phone: <a href={primaryPhoneHref()}>{primaryPhone()}</a><br />
-      Email: <a href={primaryEmailHref()}>{primaryEmail()}</a><br />
-      Hours: {site.hours.weekdays}
-    </p>
-  </div>
+  <div class="contact-page">
+    <div class="contact-facts panel">
+      <h2>Office</h2>
+      <p>
+        <a href={primaryPhoneHref()}>{primaryPhone()}</a>
+        ·
+        <a href={primaryEmailHref()}>{primaryEmail()}</a><br />
+        {site.hours.weekdays}
+      </p>
+    </div>
 
-  <h2>Send a message</h2>
-  <p>
-    Describe the pest problem and your location in St. Cloud or Central Florida. Prefer the phone?
-    Call {businessName()} at <a href={primaryPhoneHref()}>{primaryPhone()}</a> — often the fastest
-    path.
-  </p>
-  <p>
-    <button type="button" class="btn" data-open-contact="contact">Open contact form →</button>
-  </p>
+    <div class="contact-form-block">
+      <h2>Send a message</h2>
+      <p class="contact-form-block__note">
+        Tell us the pest problem and your location. Prefer the phone? Call {businessName()} at{' '}
+        <a href={primaryPhoneHref()}>{primaryPhone()}</a>.
+      </p>
+      <LeadForm client:load kind="contact" idPrefix="page" compact />
+    </div>
+  </div>
 </ContentPage>
 
 <style>
-  .contact-facts {
-    padding: 1.25rem;
-    margin: 0 0 1.5rem;
+  .contact-page {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 34rem;
   }
 
-  .contact-facts h2 {
-    margin-top: 0.5rem;
+  .contact-facts {
+    padding: 0.85rem 1rem;
+    margin: 0;
+  }
+
+  .contact-facts h2,
+  .contact-form-block h2 {
+    margin: 0 0 0.4rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  }
+
+  .contact-facts p,
+  .contact-form-block__note {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .contact-form-block {
+    display: grid;
+    gap: 0.65rem;
   }
 </style>

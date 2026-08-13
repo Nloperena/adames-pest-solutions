@@ -28,6 +28,7 @@
   left: -9999px;
   width: 1px;
   height: 1px;
+  overflow: hidden;
   opacity: 0;
   pointer-events: none;
 }
@@ -38,6 +39,7 @@
 }
 
 .lead-form form {
+  position: relative;
   display: grid;
   gap: 1rem;
   padding: 1.25rem;
@@ -46,9 +48,23 @@
   box-shadow: var(--shadow);
 }
 
+.lead-form--compact form {
+  gap: 0.65rem;
+  padding: 0.85rem 0.95rem;
+}
+
+.lead-form--compact .lead-form__consent {
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
 .lead-form__field {
   display: grid;
   gap: 0.35rem;
+}
+
+.lead-form--compact .lead-form__field {
+  gap: 0.2rem;
 }
 
 .lead-form label {
@@ -69,6 +85,12 @@
   background: var(--cream);
   color: var(--ink);
   font: inherit;
+}
+
+.lead-form--compact input,
+.lead-form--compact textarea,
+.lead-form--compact select {
+  padding: 0.55rem 0.7rem;
 }
 
 .lead-form input:focus-visible,
@@ -103,6 +125,29 @@
   box-shadow: var(--shadow);
   text-align: center;
   animation: form-success-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.form-success--compact {
+  gap: 0.4rem;
+  padding: 1.1rem 0.9rem 1rem;
+}
+
+.form-success--compact .form-success__mark {
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 0;
+}
+
+.form-success--compact .form-success__title {
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+}
+
+.form-success--compact .form-success__body {
+  font-size: 0.92rem;
+}
+
+.form-success--compact .form-success__next {
+  margin-top: 0.35rem;
 }
 
 .form-success__burst {

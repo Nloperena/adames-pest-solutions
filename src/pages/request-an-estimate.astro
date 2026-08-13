@@ -1,5 +1,6 @@
 ---
 import ContentPage from '../layouts/ContentPage.astro';
+import LeadForm from '../components/react/LeadForm';
 import { estimatePage } from '../data/pages';
 import { primaryEmailHref, primaryPhone, primaryPhoneHref, site } from '../data/site';
 ---
@@ -16,18 +17,28 @@ import { primaryEmailHref, primaryPhone, primaryPhoneHref, site } from '../data/
   mediaHeight={1350}
   formAction="estimate"
   hideCta={true}
+  compactHero={true}
 >
-  <p>
-    The fastest path for pest control near you is often a phone call. You can also open the estimate
-    form and tell us what you are seeing — palmetto bugs, ants, termites, rodents, mosquitoes, or
-    something else.
-  </p>
-  <p>
-    <button type="button" class="btn" data-open-contact="estimate">{site.cta.estimateLabel} →</button>
-  </p>
-  <p>
-    Call <a href={primaryPhoneHref()}>{primaryPhone()}</a>
-    ·
-    <a href={primaryEmailHref()}>email the office</a>
-  </p>
+  <div class="estimate-page">
+    <p class="estimate-page__note">
+      Call <a href={primaryPhoneHref()}>{primaryPhone()}</a>
+      ·
+      <a href={primaryEmailHref()}>email the office</a>
+      — or send the short form below.
+    </p>
+    <LeadForm client:load kind="estimate" idPrefix="page" compact />
+  </div>
 </ContentPage>
+
+<style>
+  .estimate-page {
+    display: grid;
+    gap: 0.85rem;
+    max-width: 34rem;
+  }
+
+  .estimate-page__note {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+</style>

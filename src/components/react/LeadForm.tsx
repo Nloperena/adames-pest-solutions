@@ -20,10 +20,15 @@ type FormKind = 'contact' | 'estimate';
 type Props = {
   kind: FormKind;
   idPrefix?: string;
+  /** Tighter spacing for contact page + modal */
+  compact?: boolean;
 };
 
 type Values = Record<string, string>;
 type Errors = Record<string, string>;
+
+/** Autofill-safe honeypot key - never name this "website" / "url". */
+const HONEYPOT_KEY = 'company_fax';
 
 function getDefinition(kind: FormKind) {
   return kind === 'contact' ? contactForm : estimateForm;
@@ -61,7 +66,7 @@ function buildMessage(kind: FormKind, values: Values): string {
   return parts.join('\n');
 }
 
-export default function LeadForm({ kind, idPrefix = '' }: Props) {
+export default function LeadForm({ kind, idPrefix = '', compact = false }: Props) {
   const definition = useMemo(() => getDefinition(kind), [kind]);
   const [values, setValues] = useState<Values>({});
   const [errors, setErrors] = useState<Errors>({});
@@ -86,7 +91,7 @@ export default function LeadForm({ kind, idPrefix = '' }: Props) {
     if (Object.keys(nextErrors).length > 0) return;
 
     // Honeypot filled → pretend success, do not send
-    if (values.website?.trim()) {
+    if (values[HONEYPOT_KEY]?.trim()) {
       setSuccess(true);
       setValues({});
       return;
@@ -114,26 +119,34 @@ export default function LeadForm({ kind, idPrefix = '' }: Props) {
     }
   }
 
+  const textRows = compact ? (kind === 'contact' ? 3 : 2) : kind === 'contact' ? 4 : 3;
+
   return (
-    <div className="lead-form">
-      <div className="lead-form__banner" role="status">
-        Your message is delivered to the {businessName()} office during business hours.
-      </div>
+    <div className={`lead-form${compact ? ' lead-form--compact' : ''}`}>
+      {!compact ? (
+        <div className="lead-form__banner" role="status">
+          Your message is delivered to the {businessName()} office during business hours.
+        </div>
+      ) : null}
 
       {success ? (
-        <FormSuccess kind={kind} />
+        <FormSuccess kind={kind} compact={compact} />
       ) : (
         <form onSubmit={onSubmit} noValidate>
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            className="lead-form__hp"
-            value={values.website ?? ''}
-            onChange={(e) => setValues((prev) => ({ ...prev, website: e.target.value }))}
-          />
+          <div className="lead-form__hp" aria-hidden="true">
+            <label htmlFor={`${idPrefix}${definition.id}-${HONEYPOT_KEY}`}>Company fax</label>
+            <input
+              id={`${idPrefix}${definition.id}-${HONEYPOT_KEY}`}
+              type="text"
+              name={HONEYPOT_KEY}
+              tabIndex={-1}
+              autoComplete="off"
+              value={values[HONEYPOT_KEY] ?? ''}
+              onChange={(e) =>
+                setValues((prev) => ({ ...prev, [HONEYPOT_KEY]: e.target.value }))
+              }
+            />
+          </div>
 
           {definition.fields.map((field) => {
             const id = `${idPrefix}${definition.id}-${field.name}`;
@@ -148,7 +161,7 @@ export default function LeadForm({ kind, idPrefix = '' }: Props) {
                   <textarea
                     id={id}
                     name={field.name}
-                    rows={5}
+                    rows={textRows}
                     required={field.required}
                     aria-invalid={Boolean(error)}
                     aria-describedby={error ? `${id}-error` : undefined}

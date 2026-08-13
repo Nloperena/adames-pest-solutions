@@ -19,12 +19,12 @@ import {
 const COPY: Record<ContactModalKind, { title: string; lead: string; hash: string }> = {
   estimate: {
     title: 'Free estimate',
-    lead: 'Tell us the pest problem (palmetto bugs, ants, termites, rodents, mosquitoes…) and your St. Cloud or Central Florida address. We will follow up to schedule an inspection.',
+    lead: 'Tell us the pest and your St. Cloud / Central Florida address. We follow up during business hours.',
     hash: '#estimate',
   },
   contact: {
     title: 'Contact us',
-    lead: 'Message the office about pest control near you — or call now if you need help faster.',
+    lead: 'Send a quick message - or call if you need help faster.',
     hash: '#contact',
   },
 };
@@ -171,20 +171,15 @@ export default function ContactModal() {
         </header>
 
         <div className="contact-modal__body container">
-          <p className="contact-modal__eyebrow">{site.name}</p>
           <h2 id={titleId} className="contact-modal__title">
             {copy.title}
           </h2>
-          <p className="contact-modal__lead">{copy.lead}</p>
+          <p className="contact-modal__lead">
+            {copy.lead} Prefer the phone?{' '}
+            <a href={primaryPhoneHref()}>Call {primaryPhone()}</a>.
+          </p>
 
-          <div className="contact-modal__callout">
-            <p>Need help right away?</p>
-            <a className="btn btn--blue btn--block" href={primaryPhoneHref()}>
-              Call {primaryPhone()}
-            </a>
-          </div>
-
-          <LeadForm key={`${kind}-${formKey}`} kind={kind} idPrefix="modal" />
+          <LeadForm key={`${kind}-${formKey}`} kind={kind} idPrefix="modal" compact />
         </div>
       </div>
     </div>
