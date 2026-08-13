@@ -1,11 +1,22 @@
 .contact-modal {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  /* Above site chat FAB/panel so estimate always wins */
+  z-index: 400;
   display: grid;
   opacity: 0;
   pointer-events: none;
   transition: opacity 280ms ease;
+}
+
+.contact-modal__scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 .contact-modal.is-visible {
@@ -14,6 +25,8 @@
 }
 
 .contact-modal__page {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   min-height: 100%;

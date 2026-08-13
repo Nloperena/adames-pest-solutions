@@ -10,6 +10,7 @@ import {
   type ChatSiteConfig,
 } from '../../lib/chat-api';
 import { ChatMessageBody } from '../../lib/format-chat-message';
+import { CONTACT_MODAL_OPENING_EVENT } from '../../lib/contact-modal';
 import { ADAMES_SITE_KEY } from '../../lib/nexrena-api';
 import { primaryPhoneHref, site } from '../../data/site';
 
@@ -128,9 +129,17 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
       /* ignore */
     }
     if (!window.matchMedia(DESKTOP_MQ).matches) return;
+    // Don't auto-open over an estimate/contact modal deep link
+    if (window.location.hash === '#estimate' || window.location.hash === '#contact') return;
     const t = window.setTimeout(() => setOpen(true), AUTO_OPEN_MS);
     return () => window.clearTimeout(t);
   }, [dismissKey]);
+
+  useEffect(() => {
+    const onModalOpening = () => dismissChat();
+    window.addEventListener(CONTACT_MODAL_OPENING_EVENT, onModalOpening);
+    return () => window.removeEventListener(CONTACT_MODAL_OPENING_EVENT, onModalOpening);
+  }, [dismissChat]);
 
   useEffect(() => {
     if (open && messages.length === 0) {
@@ -140,13 +149,8 @@ export function SiteChatWidget({ siteKey = ADAMES_SITE_KEY }: Props) {
 
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
     const t = window.setTimeout(() => inputRef.current?.focus(), 250);
-    return () => {
-      document.body.style.overflow = prev;
-      window.clearTimeout(t);
-    };
+    return () => window.clearTimeout(t);
   }, [open]);
 
   useEffect(() => {

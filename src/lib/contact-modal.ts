@@ -2,6 +2,8 @@ export type ContactModalKind = 'contact' | 'estimate';
 
 export const CONTACT_MODAL_EVENT = 'adames:open-contact';
 export const CONTACT_MODAL_CLOSE_EVENT = 'adames:close-contact';
+/** Fired when the estimate/contact modal opens so other overlays (chat) can dismiss. */
+export const CONTACT_MODAL_OPENING_EVENT = 'adames:contact-opening';
 
 export type ContactModalDetail = {
   kind?: ContactModalKind;
@@ -9,6 +11,7 @@ export type ContactModalDetail = {
 
 export function openContactModal(kind: ContactModalKind = 'estimate') {
   if (typeof window === 'undefined') return;
+  window.dispatchEvent(new CustomEvent(CONTACT_MODAL_OPENING_EVENT, { detail: { kind } }));
   window.dispatchEvent(
     new CustomEvent<ContactModalDetail>(CONTACT_MODAL_EVENT, {
       detail: { kind },

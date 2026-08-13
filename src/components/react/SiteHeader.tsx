@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from 'react';
 import { Menu, Phone, X } from 'lucide-react';
 import { headerNavCompact } from '../../data/navigation';
+import { openContactModal } from '../../lib/contact-modal';
 import {
   businessName,
   primaryPhone,
@@ -11,6 +12,11 @@ import {
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
+
+  function openEstimate() {
+    setOpen(false);
+    openContactModal('estimate');
+  }
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -54,7 +60,7 @@ export default function SiteHeader() {
           <a className="btn btn--blue site-header__phone" href={primaryPhoneHref()}>
             {primaryPhone()}
           </a>
-          <button type="button" className="btn site-header__cta" data-open-contact="estimate">
+          <button type="button" className="btn site-header__cta" onClick={openEstimate}>
             {site.cta.estimateLabel}
           </button>
           <a
@@ -92,17 +98,13 @@ export default function SiteHeader() {
               </li>
             ))}
             <li>
-              <button
-                type="button"
-                data-open-contact="estimate"
-                onClick={() => setOpen(false)}
-              >
+              <button type="button" onClick={openEstimate}>
                 {site.cta.estimateLabel}
               </button>
             </li>
           </ul>
           <div className="site-header__drawer-actions">
-            <button type="button" className="btn btn--block" data-open-contact="estimate">
+            <button type="button" className="btn btn--block" onClick={openEstimate}>
               {site.cta.estimateLabel}
             </button>
             <a className="btn btn--blue btn--block" href={primaryPhoneHref()}>

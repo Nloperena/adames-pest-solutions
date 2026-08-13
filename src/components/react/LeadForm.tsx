@@ -13,6 +13,7 @@ import {
   primaryPhoneHref,
 } from '../../data/site';
 import { submitToNexrenaForms } from '../../lib/nexrenaFormSubmit';
+import FormSuccess from './FormSuccess';
 
 type FormKind = 'contact' | 'estimate';
 
@@ -120,16 +121,7 @@ export default function LeadForm({ kind, idPrefix = '' }: Props) {
       </div>
 
       {success ? (
-        <div className="lead-form__success" role="status">
-          <p>
-            Thanks — your request was sent. Someone from {businessName()} will follow up soon.
-          </p>
-          <p>
-            Need help faster? Call{' '}
-            <a href={primaryPhoneHref()}>{primaryPhone()}</a> or email{' '}
-            <a href={primaryEmailHref()}>{primaryEmail()}</a>.
-          </p>
-        </div>
+        <FormSuccess kind={kind} />
       ) : (
         <form onSubmit={onSubmit} noValidate>
           <input

@@ -4,6 +4,7 @@ import LeadForm from './LeadForm';
 import {
   CONTACT_MODAL_CLOSE_EVENT,
   CONTACT_MODAL_EVENT,
+  CONTACT_MODAL_OPENING_EVENT,
   kindFromTarget,
   type ContactModalDetail,
   type ContactModalKind,
@@ -31,12 +32,18 @@ const COPY: Record<ContactModalKind, { title: string; lead: string; hash: string
 export default function ContactModal() {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [kind, setKind] = useState<ContactModalKind>('estimate');
   const [visible, setVisible] = useState(false);
+  const [formKey, setFormKey] = useState(0);
 
   function show(next: ContactModalKind) {
+    window.dispatchEvent(
+      new CustomEvent(CONTACT_MODAL_OPENING_EVENT, { detail: { kind: next } }),
+    );
     setKind(next);
+    setFormKey((k) => k + 1);
     setOpen(true);
     requestAnimationFrame(() => setVisible(true));
     const { hash } = COPY[next];
@@ -92,9 +99,28 @@ export default function ContactModal() {
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     closeRef.current?.focus();
+
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') hide();
+      if (event.key === 'Escape') {
+        hide();
+        return;
+      }
+      if (event.key !== 'Tab' || !panelRef.current) return;
+      const focusable = panelRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
+
     window.addEventListener('keydown', onKey);
     return () => {
       document.body.style.overflow = previous;
@@ -113,7 +139,13 @@ export default function ContactModal() {
       aria-modal="true"
       aria-labelledby={titleId}
     >
-      <div className="contact-modal__page">
+      <button
+        type="button"
+        className="contact-modal__scrim"
+        aria-label="Close estimate form"
+        onClick={hide}
+      />
+      <div className="contact-modal__page" ref={panelRef}>
         <header className="contact-modal__top">
           <div className="contact-modal__top-inner container">
             <a className="contact-modal__brand" href="/" aria-label={`${businessName()} home`}>
@@ -152,7 +184,7 @@ export default function ContactModal() {
             </a>
           </div>
 
-          <LeadForm kind={kind} idPrefix="modal" />
+          <LeadForm key={`${kind}-${formKey}`} kind={kind} idPrefix="modal" />
         </div>
       </div>
     </div>
