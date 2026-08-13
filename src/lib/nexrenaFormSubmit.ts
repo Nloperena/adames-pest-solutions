@@ -14,29 +14,36 @@ export type AdamesFormPayload = {
 };
 
 export async function submitToNexrenaForms(payload: AdamesFormPayload): Promise<void> {
-  const res = await fetch(`${NEXRENA_API_URL}/api/forms/submit`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Site-Key': ADAMES_SITE_KEY,
-    },
-    body: JSON.stringify({
-      siteKey: ADAMES_SITE_KEY,
-      name: payload.name,
-      email: payload.email,
-      phone: payload.phone || undefined,
-      message: payload.message,
-      formName: payload.formName,
-      propertyType: payload.propertyType || undefined,
-      pestConcern: payload.pestConcern || undefined,
-      pageUrl: payload.pageUrl || (typeof window !== 'undefined' ? window.location.href : undefined),
-      website: payload.website || undefined,
-      formSecret: import.meta.env.PUBLIC_ADAMES_FORM_SECRET as string | undefined,
-    }),
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${NEXRENA_API_URL}/api/forms/submit`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Site-Key': ADAMES_SITE_KEY,
+      },
+      body: JSON.stringify({
+        siteKey: ADAMES_SITE_KEY,
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone || undefined,
+        message: payload.message,
+        formName: payload.formName,
+        propertyType: payload.propertyType || undefined,
+        pestConcern: payload.pestConcern || undefined,
+        pageUrl: payload.pageUrl || (typeof window !== 'undefined' ? window.location.href : undefined),
+        website: payload.website || undefined,
+        formSecret: import.meta.env.PUBLIC_ADAMES_FORM_SECRET as string | undefined,
+      }),
+    });
+  } catch {
+    throw new Error(
+      'Network error reaching the form inbox (blocked request or offline). Please call or email us so your request is not lost.',
+    );
+  }
 
   if (!res.ok) {
     const body = (await res.json().catch(() => ({}))) as { error?: string };
-    throw new Error(body.error ?? 'Submission failed');
+    throw new Error(body.error ?? `Submission failed (${res.status})`);
   }
 }
